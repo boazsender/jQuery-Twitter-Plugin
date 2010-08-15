@@ -1,0 +1,74 @@
+<!DOCTYPE html> 
+<html>
+  <head> 
+    <title>Twitter Search Plugin</title> 
+    <script src="jquery-1.4.2.js"></script>
+    <script src="jquery.twitter.min.js"></script>
+    <style type="text/css">
+      .twitter-posts li       {margin-bottom: 10px; font-size: 12px; clear: both; list-style-type:none;}
+      .twitter-posts li img   {float:left; margin:0px 10px 10px 0px;border:1px solid #c2c2c2; -moz-box-shadow: 0px 0px 4px #c2c2c2;  -webkit-box-shadow: 0px 0px 4px #c2c2c2; box-shadow: 0px 0px 4px #c2c2c2;}
+      .twitter-posts li a     {text-decoration:none; color: #009;}
+      hr.space                {clear:both; width: 100%; visibility:hidden;}
+    </style>
+    <script type="text/javascript">
+      $(function(){
+        //Call twitter search for tweets from bocoup
+        // and display 2 results
+        $('#bocoup').twitter('bocoup', 2);
+      
+        //Call twitter search for tweets from boazsender
+        // with the terms jquery or bocoup
+        // and display 12 results
+        $('#boazsender').twitter({
+                ands    : 'jquery bocoup', // All of these words	
+                phrase  : '',              // This exact phrase	
+                ors     : '',              // Any of these words	
+                nots    : '',              // None of these words	
+                tag     : '',              // This hashtag	
+                lang    : '',              // Written in language
+                from    : 'boazsender',    // From this person	
+                to      : '',              // To this person	
+                ref     : '',              // Referencing this person	
+                near    : '',              // Near this place	
+                within  : '',              // Within this distance
+                units   : '',              // Distance unit (miles or kilometers)
+                since   : '',              // Since this date	 
+                until   : '',              // Until this date	 
+                tude    : '',              // Attitude: '?' or ':)' or ':)'
+                filter  : '',              // Containing: 'links'
+                include : '',              // Include retweet?: 'retweets'
+                rpp     : 12               // Results per page
+              });
+      
+       //Call twitter search for tweets asdfghjklkjs
+       // and display 0 results
+       // and set a special message to display if no results are found
+       $('#whatever').twitter('whatever', 0, 'Whoops, no results');
+      });
+    </script>
+    
+    <link href="twitterSearch.jQuery.css" media="screen" rel="stylesheet" type="text/css"> 
+  </head> 
+  <body> 
+    <h1>Twitter:</h1>
+    <h2>@Bocoup:</h2>
+    <div id="bocoup" class="twitter-posts">
+      <h3>Loading Tweets From The Cloud With AJAX HTML5...</h3>
+    </div>
+    
+    <hr class="space" />
+    
+    <h2>@BoazSender</h2>
+    <div id="boazsender" class="twitter-posts">
+      <h3>Loading Tweets From The Cloud With AJAX HTML5...</h3>
+    </div>
+
+    <hr class="space" />
+
+    <h2>@whatever:</h2>
+    <div id="whatever" class="twitter-posts">
+      <h3>Loading Tweets From The Cloud With AJAX HTML5...</h3>
+    </div>
+    
+  </body> 
+</html>
