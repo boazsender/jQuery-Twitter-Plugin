@@ -19,7 +19,8 @@
 	        			limit        : 7,           // Number of tweets to get <-- not in twitter api, maps to and superseeds rpp (results per page)
 	        			exclusions   : '@ #',       // Strings to exclude <-- not in twitter api, done in plugin
 	        			notFoundText : '',          // Text to display if no results are found <-- not in twitter api, done in plugin
-	        			mentions     : true,        // Include mentions <-- not in twitter api, done in plugin
+	        			replies      : false,        // Include mentions <-- not in twitter api, done in plugin
+	        			retweets      : false,        // Include mentions <-- not in twitter api, done in plugin
                 ands    : '',              // All of these words	
                 phrase  : '',              // This exact phrase	
                 ors     : '',              // Any of these words	
@@ -43,10 +44,11 @@
 				// Call twitter search for tweets from rwaldron
 				// with no mentions
 				// and display 12 results
-				$('#boazsender').twitter({
-				  	 	  limit        : 7,    // Number of tweets to get <-- not in twitter api, maps to and superseeds rpp (results per page)
-				  	 	  mentions     : false // Include mentions <-- not in twitter api, done in plugin
-				       });
+				$('#rwaldron').twitter({
+								from				 : 'rwaldron',
+				  	 	  limit        : 10,    // Number of tweets to get <-- not in twitter api, maps to and superseeds rpp (results per page)
+				  	 	  replies      : false // Include replies? <-- not in twitter api, done in plugin
+				      });
       	
       
         //Call twitter search for tweets from bocoup
@@ -67,6 +69,13 @@
     
     <h2>@BoazSender</h2>
     <div id="boazsender" class="twitter-posts">
+      <h3>Loading Tweets From The Cloud With AJAX HTML5...</h3>
+    </div>
+
+    <hr class="space" />
+
+    <h2>@rwaldron</h2>
+    <div id="rwaldron" class="twitter-posts">
       <h3>Loading Tweets From The Cloud With AJAX HTML5...</h3>
     </div>
 

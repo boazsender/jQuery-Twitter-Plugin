@@ -18,10 +18,18 @@
    * Some regexps adapted from http://userscripts.org/scripts/review/7122
    */
   var opts = {
+<<<<<<< HEAD
         limit        : 7,     // Number of tweets to get <-- not in twitter api, maps to and superseeds rpp (results per page)
         exclusions   : '@ #', // Strings to exclude <-- not in twitter api, done in plugin
         notFoundText : '',    // Text to display if no results are found <-- not in twitter api, done in plugin
         mentions     : true,  // Include mentions <-- not in twitter api, done in plugin
+=======
+	      limit        : 7,     // Number of tweets to get <-- not in twitter api, maps to and superseeds rpp (results per page)
+	      exclusions   : '@ #', // Strings to exclude <-- not in twitter api, done in plugin
+	      notFoundText : '',    // Text to display if no results are found <-- not in twitter api, done in plugin
+  	 	  replies      : true,  // Include replies? <-- not in twitter api, done in plugin
+  	 	  retweets     : true,  // Include replies? <-- not in twitter api, done in plugin
+>>>>>>> boazsender/master
         ands    : '', // All of these words  
         phrase  : '', // This exact phrase 
         ors     : '', // Any of these words  
@@ -56,7 +64,8 @@
   $.fn.twitter = function (options) {
     // Set a temporary default _opts object
     var _opts = opts,
-        query;
+        query,
+        exclusionsExp = new RegExp(false);
     
     // If options is a string use it as username
     if(typeof options == 'string'){
@@ -70,7 +79,7 @@
       options.rpp = (options.exclusions && options.exclusions.length) ? (options.rpp * 10) : options.rpp;
 
       // If there are exlusions, turn them into a regex to use later
-      var exclusionsExp = new RegExp(options.exclusions ? options.exclusions.replace(' ', '|') : null),
+      exclusionsExp = new RegExp(options.exclusions ? options.exclusions.replace(' ', '|') : null),
 
           // If text to display if no results are found is set, use it, otherwise, set it
           notFoundText = options.notFoundText ? options.notFoundText : 'No results found on twitter';
@@ -102,13 +111,24 @@
           for(var i in tweets.results){
 
             // Cache tweet content
-            var tweet   = tweets.results[i],
-                firstChars = tweet.text.slice(0,1)[0];
-                
-                //console.log(firstChars);
+            var tweet      = tweets.results[i],
+                allowReply   = !_opts.replies && tweet.text.slice(0,1) == '@' ? (tweet.text.slice(1,2) != ' ' ? false : true) : true,
+                allowRetweet = !_opts.retweets && tweet.text.slice(0,2) == 'RT' ? false : true;
+            
+            if ( !allowReply  ) {
+              console.log('!allowReply');
+              continue;
+            }
+            if ( !allowRetweet ) {
+              console.log('!allowRetweet');
+              continue;
+            }
+            
             
             // If exlusions set and none of the exlusions is found in the tweet then add it to the DOM
-            if (exclusionsExp && !exclusionsExp.test(tweet.text)) {
+            if (!exclusionsExp.test(tweet.text) ) {
+              continue;
+            }  
               $('<li/>', { // Create and cache new LI
                 className : 'tweet'
               })
@@ -122,7 +142,7 @@
               }))
               .appendTo($tweets);
             }
-          }
+          
           // Append the $tweets to the DOM
           $this.html($tweets);
         
