@@ -3,7 +3,7 @@
   <head> 
     <title>Twitter Search Plugin</title> 
     <script src="jquery-1.4.2.js"></script>
-    <script src="jquery.twitter.min.js"></script>
+    <script src="jquery.twitter.js"></script>
     <style type="text/css">
       .twitter-posts li       {margin-bottom: 10px; font-size: 12px; clear: both; list-style-type:none;}
       .twitter-posts li img   {float:left; margin:0px 10px 10px 0px;border:1px solid #c2c2c2; -moz-box-shadow: 0px 0px 4px #c2c2c2;  -webkit-box-shadow: 0px 0px 4px #c2c2c2; box-shadow: 0px 0px 4px #c2c2c2;}
@@ -16,8 +16,8 @@
         // with the terms jquery or bocoup
         // and display 12 results
         $('#boazsender').twitter({
-	        			limit   : 5,               // Number of tweets to get <-- not in twitter api, maps to and superseeds rpp (results per page)
-	        			exclude : '@',             // Strings to exclude <-- not in twitter api, done in plugin
+	        			limit   : 7,               // Number of tweets to get <-- not in twitter api, maps to and superseeds rpp (results per page)
+	        			exclusions : '@ #',        // Strings to exclude <-- not in twitter api, done in plugin
 	        			notFoundText : '',         // Text to display if no results are found <-- not in twitter api, done in plugin
                 ands    : '',              // All of these words	
                 phrase  : '',              // This exact phrase	
@@ -46,7 +46,7 @@
        //Call twitter search for tweets asdfghjklkjs
        // and display 0 results
        // and set a special message to display if no results are found
-       $('#whatever').twitter('whatever', 0, 'Whoops, no results');
+       $('#whatever').twitter('whatever');
       });
     </script>
     
