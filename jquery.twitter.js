@@ -19,7 +19,7 @@
    */
   var opts = {
 	      limit        : 7,     // Number of tweets to get <-- not in twitter api, maps to and superseeds rpp (results per page)
-	      exclusions   : '@ #', // Strings to exclude <-- not in twitter api, done in plugin
+	      exclusions   : '',    // Strings to exclude <-- not in twitter api, done in plugin
 	      notFoundText : '',    // Text to display if no results are found <-- not in twitter api, done in plugin
   	 	  replies      : true,  // Include replies? <-- not in twitter api, done in plugin
   	 	  retweets     : true,  // Include replies? <-- not in twitter api, done in plugin
@@ -107,28 +107,39 @@
 
             // Cache tweet content
             var tweet      = tweets.results[i],
+                // Set a variable to determine weather replies are set to false, and if so, weather the tweet starts with a reply
                 allowReply   = !_opts.replies && tweet.text.slice(0,1) == '@' ? (tweet.text.slice(1,2) != ' ' ? false : true) : true,
+                // Set a variable to determine weather retweets are set to false, and if so, weather the tweet starts with a retweet
                 allowRetweet = !_opts.retweets && tweet.text.slice(0,2) == 'RT' ? false : true;
 
+            console.log('1')
+            // Only proceed if allow reply is false
             if (!allowReply) {continue;}
-            if (!allowRetweet ){continue;}
+            console.log('2')
+
+            // Only proceed if allow retweet is false
+            if (!allowRetweet) {continue;}
+            console.log('3')
 
             // If exlusions set and none of the exlusions is found in the tweet then add it to the DOM
-            if (!exclusionsExp.test(tweet.text) ) {
-              continue;
-            }  
+            if (!exclusionsExp.test(tweet.text)) {continue;}  
 
-            $('<li/>', { // Create and cache new LI
+
+            // Create and cache new LI
+            $('<li/>', {
               className : 'tweet'
             })
-            .append($('<a/>', {   // Make the avatar, and append it to the $tweet
+            // Make the avatar, and append it to the $tweet
+            .append($('<a/>', {
               href: 'http://twitter.com/' + tweet.from_user,
               html: '<img src="' + tweet.profile_image_url + '"/>'
             }))
-            .append($('<span>', { // Make the tweet text, and append it to the $tweet, then to the parent
+            // Make the tweet text, and append it to the $tweet, then to the parent
+            .append($('<span>', {
               className: 'content',
               html: '<a href="http://twitter.com/' + tweet.from_user + '">@' + tweet.from_user + '</a>: ' + mention(hashtags(linkify(tweet.text)))
             }))
+            // Append tweet to the $tweets ul
             .appendTo($tweets);
           }
           
@@ -137,8 +148,9 @@
         
         // Else there are no results to work with  
         } else {
+          // Update the DOM to reflect that no results were found
           $this.html($('<h3/>', {
-            className: 'twitterSearch-notFound',
+            className: 'twitter-notFound',
             text: notFoundText
           }));
         }
