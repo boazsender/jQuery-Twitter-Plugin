@@ -3,20 +3,20 @@ $(function(){
   $('#testlist2').twitter('whatever', 0, 'Whoops, no results');
   $('#testlist3').twitter('whatever', 0);
   $('#testlist4').twitter({
-          ands    : 'I',           // All of these words	
-          phrase  : '',            // This exact phrase	
-          ors     : 'lol rotfl',   // Any of these words	
-          nots    : 'dirty',       // None of these words	
-          tag     : 'omg',         // This hashtag	
+          ands    : 'I',           // All of these words  
+          phrase  : '',            // This exact phrase 
+          ors     : 'lol rotfl',   // Any of these words  
+          nots    : 'dirty',       // None of these words 
+          tag     : 'omg',         // This hashtag  
           lang    : '',              // Written in language
-          from    : '',              // From this person	
-          to      : '',              // To this person	
-          ref     : '',              // Referencing this person	
-          near    : '',              // Near this place	
+          from    : '',              // From this person  
+          to      : '',              // To this person  
+          ref     : '',              // Referencing this person 
+          near    : '',              // Near this place 
           within  : '',              // Within this distance
           units   : '',              // Distance unit (miles or kilometers)
-          since   : '',              // Since this date	 
-          until   : '',              // Until this date	 
+          since   : '',              // Since this date  
+          until   : '',              // Until this date  
           tude    : '',              // Attitude: '?' or ':)' or ':)'
           filter  : '',              // Containing: 'links'
           include : '',              // Include retweet?: 'retweets'
@@ -27,7 +27,11 @@ $(function(){
   module("Basic Tests");
   test("Test the signatures", function() {
     ok($.isFunction($.fn.twitter), "$.fn.twitter exists and is a function" );
-    equals( 'object', (typeof $.fn.twitter()), "$.fn.twitter() returns and object" );
+    
+    //console.log(typeof $.fn.twitter());
+    equals( 'object', (typeof $.fn.twitter({})), "$.fn.twitter() returns and object" );
+    
+    equals( 'undefined', (typeof $.fn.twitter()), "$.fn.twitter() returns and object" );
     
   });
   test("Test twitter list that is built", function() {

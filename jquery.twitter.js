@@ -21,20 +21,20 @@
         limit   : '',      // Number of tweets to get <-- not in twitter api, maps to and superseeds rpp (results per page)
         exclusions : '',      // Strings to exclude <-- not in twitter api, done in plugin
         notFoundText : '', // Text to display if no results are found <-- not in twitter api, done in plugin
-        ands    : '',      // All of these words	
-        phrase  : '',      // This exact phrase	
-        ors     : '',      // Any of these words	
-        nots    : '',      // None of these words	
-        tag     : '',      // This hashtag	
+        ands    : '',      // All of these words  
+        phrase  : '',      // This exact phrase 
+        ors     : '',      // Any of these words  
+        nots    : '',      // None of these words 
+        tag     : '',      // This hashtag  
         lang    : '',      // Written in language
-        from    : '',      // From this person	
-        to      : '',      // To this person	
-        ref     : '',      // Referencing this person	
-        near    : '',      // Near this place	
+        from    : '',      // From this person  
+        to      : '',      // To this person  
+        ref     : '',      // Referencing this person 
+        near    : '',      // Near this place 
         within  : '',      // Within this distance
         units   : '',      // Distance unit (miles or kilometers)
-        since   : '',      // Since this date	 
-        until   : '',      // Until this date	 
+        since   : '',      // Since this date  
+        until   : '',      // Until this date  
         tude    : '',      // Attitude: '?' or ':)' or ':)'
         filter  : '',      // Containing: 'links'
         include : '',      // Include retweet?: 'retweets'
@@ -76,7 +76,7 @@
         notFoundText = options.notFoundText ? options.notFoundText : 'No results found on twitter';
 
     // Merge temp _opts it with the default options
-    var _opts = $.extend({}, _opts, options);
+    _opts = $.extend({}, _opts, options);
 
     // Delete the properies from the options object that we're not sendiing to twitter search api
     delete _opts.limit;
