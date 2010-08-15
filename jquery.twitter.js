@@ -109,34 +109,28 @@
             var tweet      = tweets.results[i],
                 allowReply   = !_opts.replies && tweet.text.slice(0,1) == '@' ? (tweet.text.slice(1,2) != ' ' ? false : true) : true,
                 allowRetweet = !_opts.retweets && tweet.text.slice(0,2) == 'RT' ? false : true;
-            
-            if ( !allowReply  ) {
-              console.log('!allowReply');
-              continue;
-            }
-            if ( !allowRetweet ) {
-              console.log('!allowRetweet');
-              continue;
-            }
-            
-            
+
+            if (!allowReply) {continue;}
+            if (!allowRetweet ){continue;}
+
             // If exlusions set and none of the exlusions is found in the tweet then add it to the DOM
             if (!exclusionsExp.test(tweet.text) ) {
               continue;
             }  
-              $('<li/>', { // Create and cache new LI
-                className : 'tweet'
-              })
-              .append($('<a/>', {   // Make the avatar, and append it to the $tweet
-                href: 'http://twitter.com/' + tweet.from_user,
-                html: '<img src="' + tweet.profile_image_url + '"/>'
-              }))
-              .append($('<span>', { // Make the tweet text, and append it to the $tweet, then to the parent
-                className: 'content',
-                html: '<a href="http://twitter.com/' + tweet.from_user + '">@' + tweet.from_user + '</a>: ' + mention(hashtags(linkify(tweet.text)))
-              }))
-              .appendTo($tweets);
-            }
+
+            $('<li/>', { // Create and cache new LI
+              className : 'tweet'
+            })
+            .append($('<a/>', {   // Make the avatar, and append it to the $tweet
+              href: 'http://twitter.com/' + tweet.from_user,
+              html: '<img src="' + tweet.profile_image_url + '"/>'
+            }))
+            .append($('<span>', { // Make the tweet text, and append it to the $tweet, then to the parent
+              className: 'content',
+              html: '<a href="http://twitter.com/' + tweet.from_user + '">@' + tweet.from_user + '</a>: ' + mention(hashtags(linkify(tweet.text)))
+            }))
+            .appendTo($tweets);
+          }
           
           // Append the $tweets to the DOM
           $this.html($tweets);
