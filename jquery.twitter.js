@@ -18,19 +18,11 @@
    * Some regexps adapted from http://userscripts.org/scripts/review/7122
    */
   var opts = {
-<<<<<<< HEAD
         limit        : 7,     // Number of tweets to get <-- not in twitter api, maps to and superseeds rpp (results per page)
-        exclusions   : '@ #', // Strings to exclude <-- not in twitter api, done in plugin
+        exclusions   : '',    // Strings to exclude <-- not in twitter api, done in plugin
         notFoundText : '',    // Text to display if no results are found <-- not in twitter api, done in plugin
         replies      : true,  // Include replies? <-- not in twitter api, done in plugin
         retweets     : true,  // Include replies? <-- not in twitter api, done in plugin
-=======
-	      limit        : 7,     // Number of tweets to get <-- not in twitter api, maps to and superseeds rpp (results per page)
-	      exclusions   : '',    // Strings to exclude <-- not in twitter api, done in plugin
-	      notFoundText : '',    // Text to display if no results are found <-- not in twitter api, done in plugin
-  	 	  replies      : true,  // Include replies? <-- not in twitter api, done in plugin
-  	 	  retweets     : true,  // Include replies? <-- not in twitter api, done in plugin
->>>>>>> boazsender/master
         ands    : '', // All of these words  
         phrase  : '', // This exact phrase 
         ors     : '', // Any of these words  
@@ -64,16 +56,9 @@
       };
       
   $.fn.twitter = function (options) {
-<<<<<<< HEAD
-    // Set a temporary default _opts object
-    var _opts = opts,
-        exclusionsExp = new RegExp(false),
-        query;
-=======
     // Set a temporary default query object
     var query,
         exclusionsExp = new RegExp(false);
->>>>>>> boazsender/master
     
     // If options is a string use it as username
     if(typeof options == 'string'){
@@ -89,14 +74,9 @@
       options.rpp = (options.exclusions && options.exclusions.length) ? (options.rpp * 10) : options.rpp;
 
       // If there are exlusions, turn them into a regex to use later
-<<<<<<< HEAD
-      exclusionsExp = new RegExp(options.exclusions ? options.exclusions.replace(' ', '|') : null),
-
-=======
       exclusionsStr = options.exclusions ? options.exclusions.replace(' ', '|') : false;
       exclusionsExp = exclusionsStr ? new RegExp(exclusionsStr) : false;
       
->>>>>>> boazsender/master
       // If text to display if no results are found is set, use it, otherwise, set it
       notFoundText = options.notFoundText ? options.notFoundText : 'No results found on twitter';
 
@@ -104,17 +84,10 @@
       query = $.extend({}, opts, options);
 
       // Delete the properies from the options object that we're not sendiing to twitter search api
-<<<<<<< HEAD
-      delete _opts.limit;
-      delete _opts.exclusions;
-      delete _opts.notFoundText;
-    
-=======
       delete query.limit;
       delete query.exclusions;
       delete query.notFoundText;
 
->>>>>>> boazsender/master
     }
     
     return this.each(function () {
