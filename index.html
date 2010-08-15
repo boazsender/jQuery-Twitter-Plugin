@@ -3,7 +3,7 @@
   <head> 
     <title>Twitter Search Plugin</title> 
     <script src="jquery-1.4.2.js"></script>
-    <script src="jquery.twitter.min.js"></script>
+    <script src="jquery.twitter.js"></script>
     <style type="text/css">
       .twitter-posts li       {margin-bottom: 10px; font-size: 12px; clear: both; list-style-type:none;}
       .twitter-posts li img   {float:left; margin:0px 10px 10px 0px;border:1px solid #c2c2c2; -moz-box-shadow: 0px 0px 4px #c2c2c2;  -webkit-box-shadow: 0px 0px 4px #c2c2c2; box-shadow: 0px 0px 4px #c2c2c2;}
@@ -12,15 +12,14 @@
     </style>
     <script type="text/javascript">
       $(function(){
-        //Call twitter search for tweets from bocoup
-        // and display 2 results
-        $('#bocoup').twitter('bocoup', 2);
-      
         //Call twitter search for tweets from boazsender
         // with the terms jquery or bocoup
         // and display 12 results
         $('#boazsender').twitter({
-                ands    : 'jquery bocoup', // All of these words	
+	        			limit   : 7,               // Number of tweets to get <-- not in twitter api, maps to and superseeds rpp (results per page)
+	        			exclusions : '@ #',        // Strings to exclude <-- not in twitter api, done in plugin
+	        			notFoundText : '',         // Text to display if no results are found <-- not in twitter api, done in plugin
+                ands    : '',              // All of these words	
                 phrase  : '',              // This exact phrase	
                 ors     : '',              // Any of these words	
                 nots    : '',              // None of these words	
@@ -40,10 +39,14 @@
                 rpp     : 12               // Results per page
               });
       
+        //Call twitter search for tweets from bocoup
+        // and display 2 results
+        $('#bocoup').twitter('bocoup');
+
        //Call twitter search for tweets asdfghjklkjs
        // and display 0 results
        // and set a special message to display if no results are found
-       $('#whatever').twitter('whatever', 0, 'Whoops, no results');
+       $('#whatever').twitter('whatever');
       });
     </script>
     
@@ -51,18 +54,19 @@
   </head> 
   <body> 
     <h1>Twitter:</h1>
-    <h2>@Bocoup:</h2>
-    <div id="bocoup" class="twitter-posts">
-      <h3>Loading Tweets From The Cloud With AJAX HTML5...</h3>
-    </div>
-    
-    <hr class="space" />
     
     <h2>@BoazSender</h2>
     <div id="boazsender" class="twitter-posts">
       <h3>Loading Tweets From The Cloud With AJAX HTML5...</h3>
     </div>
 
+    <hr class="space" />
+
+    <h2>@Bocoup:</h2>
+    <div id="bocoup" class="twitter-posts">
+      <h3>Loading Tweets From The Cloud With AJAX HTML5...</h3>
+    </div>
+    
     <hr class="space" />
 
     <h2>@whatever:</h2>
