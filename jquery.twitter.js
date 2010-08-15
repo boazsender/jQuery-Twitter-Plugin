@@ -112,14 +112,11 @@
                 // Set a variable to determine weather retweets are set to false, and if so, weather the tweet starts with a retweet
                 allowRetweet = !_opts.retweets && tweet.text.slice(0,2) == 'RT' ? false : true;
 
-            console.log('1')
             // Only proceed if allow reply is false
             if (!allowReply) {continue;}
-            console.log('2')
 
             // Only proceed if allow retweet is false
             if (!allowRetweet) {continue;}
-            console.log('3')
 
             // If exlusions set and none of the exlusions is found in the tweet then add it to the DOM
             if (!exclusionsExp.test(tweet.text)) {continue;}  
