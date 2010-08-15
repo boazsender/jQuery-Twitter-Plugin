@@ -1,7 +1,14 @@
 $(function(){
-  $('#testlist1').twitter('mediatemple', 2)
-  $('#testlist2').twitter('whatever', 0, 'Whoops, no results');
-  $('#testlist3').twitter('whatever', 0);
+  $('#testlist1').twitter({
+    from:'mediatemple',
+    rpp: 2
+  });
+  $('#testlist2').twitter({
+    from:'whatever', 
+    limit:0, 
+    notFoundText: 'Whoops, no results'
+  });
+  $('#testlist3').twitter('whatever');
   $('#testlist4').twitter({
           ands    : 'I',           // All of these words  
           phrase  : '',            // This exact phrase 

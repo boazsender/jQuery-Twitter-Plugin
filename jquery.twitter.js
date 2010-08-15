@@ -86,7 +86,7 @@
     
     // Serialize the query object
     var query = $.param(_opts);
-
+    
     return this.each(function () {
       
       // Cache `this`
