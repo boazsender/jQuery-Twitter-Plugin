@@ -82,8 +82,9 @@
       delete _opts.limit;
       delete _opts.exclusions;
       delete _opts.notFoundText;
-
-
+    
+    }
+    
     return this.each(function () {
       
       // Cache `this`
