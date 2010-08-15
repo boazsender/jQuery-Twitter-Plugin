@@ -4,7 +4,7 @@
    * http://code.bocoup.com/jquery-twitter-plugin/
    *
    * Copyright (c) 2010 Bocoup, LLC
-   * Authors: by Boaz Sender, Nick Cammarata, Rick Waldron
+   * Authors: Boaz Sender, Nick Cammarata, Rick Waldron
    * Dual licensed under the MIT and GPL licenses.
    * http://code.bocoup.com/license/
    *
