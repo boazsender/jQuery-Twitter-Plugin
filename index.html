@@ -12,15 +12,14 @@
     </style>
     <script type="text/javascript">
       $(function(){
-        //Call twitter search for tweets from bocoup
-        // and display 2 results
-        $('#bocoup').twitter('bocoup', 2);
-      
         //Call twitter search for tweets from boazsender
         // with the terms jquery or bocoup
         // and display 12 results
         $('#boazsender').twitter({
-                ands    : 'jquery bocoup', // All of these words	
+	        			limit   : 5,               // Number of tweets to get <-- not in twitter api, maps to and superseeds rpp (results per page)
+	        			exclude : '@',             // Strings to exclude <-- not in twitter api, done in plugin
+	        			notFoundText : '',         // Text to display if no results are found <-- not in twitter api, done in plugin
+                ands    : '',              // All of these words	
                 phrase  : '',              // This exact phrase	
                 ors     : '',              // Any of these words	
                 nots    : '',              // None of these words	
@@ -40,6 +39,10 @@
                 rpp     : 12               // Results per page
               });
       
+        //Call twitter search for tweets from bocoup
+        // and display 2 results
+        $('#bocoup').twitter('bocoup');
+
        //Call twitter search for tweets asdfghjklkjs
        // and display 0 results
        // and set a special message to display if no results are found
@@ -51,18 +54,19 @@
   </head> 
   <body> 
     <h1>Twitter:</h1>
-    <h2>@Bocoup:</h2>
-    <div id="bocoup" class="twitter-posts">
-      <h3>Loading Tweets From The Cloud With AJAX HTML5...</h3>
-    </div>
-    
-    <hr class="space" />
     
     <h2>@BoazSender</h2>
     <div id="boazsender" class="twitter-posts">
       <h3>Loading Tweets From The Cloud With AJAX HTML5...</h3>
     </div>
 
+    <hr class="space" />
+
+    <h2>@Bocoup:</h2>
+    <div id="bocoup" class="twitter-posts">
+      <h3>Loading Tweets From The Cloud With AJAX HTML5...</h3>
+    </div>
+    
     <hr class="space" />
 
     <h2>@whatever:</h2>
