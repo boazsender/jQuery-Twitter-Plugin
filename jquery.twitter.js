@@ -64,7 +64,7 @@
     
 
     // Call Twitter JSONP
-    $.getJSON('http://search.twitter.com/search.json?'+$.param(query)+'&callback=?', function(tweets){ 
+    $.getJSON('http://search.twitter.com/search.json?callback=?', query, function(tweets){ 
       callback(tweets, query, exclusionsExp)
     });
   };
