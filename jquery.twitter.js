@@ -1,15 +1,14 @@
+/*
+ * Twitter Search Plugin jquery.twitter.js
+ * http://code.bocoup.com/jquery-twitter-plugin/
+ *
+ * Copyright (c) 2010 Bocoup, LLC
+ * Authors: Boaz Sender, Rick Waldron, Nick Cammarata
+ * Dual licensed under the MIT and GPL licenses.
+ * http://code.bocoup.com/license/
+ *
+ */
 ;(function ($) {
-  /*
-   * Twitter Search Plugin jquery.twitter.js
-   * http://code.bocoup.com/jquery-twitter-plugin/
-   *
-   * Copyright (c) 2010 Bocoup, LLC
-   * Authors: Boaz Sender, Rick Waldron, Nick Cammarata
-   * Dual licensed under the MIT and GPL licenses.
-   * http://code.bocoup.com/license/
-   *
-   * Some regexps adapted from http://userscripts.org/scripts/review/7122
-   */
   $.getScript('http://github.com/cowboy/javascript-linkify/raw/master/ba-linkify.min.js');
    
   var mention   = function(str) {
