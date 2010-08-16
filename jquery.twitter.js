@@ -22,12 +22,6 @@
         });
       };
 
-  //  This allows the plugin to have the base styles without including a sep file. 
-  $('<style/>', {
-    text: '.twitter-posts li{margin-bottom:10px;font-size:12px;clear:both;list-style-type:none;}.twitter-posts li img{float:left;border:1px solid #c2c2c2;-moz-box-shadow:0 0 4px #c2c2c2;-webkit-box-shadow:0 0 4px #c2c2c2;box-shadow:0 0 4px #c2c2c2;margin:0 10px 10px 0;}.twitter-posts li a{text-decoration:none;color:#009;}'
-  }).prepend('head');
-
-
   $.twitter = function (options, callback) {
     // Fail if the options arg is not set
     if ( !options ) {
