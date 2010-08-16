@@ -50,6 +50,9 @@
       // If a limit is set, add it to the query object
       options.rpp = options.limit ? options.limit : options.rpp;
 
+      // If no limit is set, make the limit the rpp
+      options.limit = options.limit ? options.limit : options.rpp;
+
       // If there are exlusions, turn them into a regex string
       exclusionsStr = options.exclusions ? options.exclusions.replace(' ', '|') : false;
 
@@ -142,7 +145,7 @@
             limitInt++;            
 
             // If the counter is equal to the limit, stop rendering tweets
-            if ( limitInt === options.rpp ) {
+            if ( limitInt === query.limit ) {
               break;
             }
           }
