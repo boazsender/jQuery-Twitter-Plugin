@@ -6,60 +6,82 @@
     <script src="jquery.twitter.js"></script>
     <style type="text/css">
       .twitter-posts li       {margin-bottom: 10px; font-size: 12px; clear: both; list-style-type:none;}
-      .twitter-posts li img   {float:left; margin:0px 10px 10px 0px;border:1px solid #c2c2c2; -moz-box-shadow: 0px 0px 4px #c2c2c2;  -webkit-box-shadow: 0px 0px 4px #c2c2c2; box-shadow: 0px 0px 4px #c2c2c2;}
+      .twitter-posts li img   {float:left; width: 48px; margin:0px 10px 10px 0px;border:1px solid #c2c2c2; -moz-box-shadow: 0px 0px 4px #c2c2c2;  -webkit-box-shadow: 0px 0px 4px #c2c2c2; box-shadow: 0px 0px 4px #c2c2c2;}
       .twitter-posts li a     {text-decoration:none; color: #009;}
       hr.space                {clear:both; width: 100%; visibility:hidden;}
     </style>
     <script type="text/javascript">
       $(function(){
-        // Call twitter search for tweets from boazsender
-        // with the terms jquery or bocoup
-        // and display 12 results
-        $('#boazsender').twitter({
-	        			limit        : 7,           // Number of tweets to get <-- not in twitter api, maps to and superseeds rpp (results per page)
-	        			exclusions   : '@ #',       // Strings to exclude <-- not in twitter api, done in plugin
-	        			notFoundText : '',          // Text to display if no results are found <-- not in twitter api, done in plugin
-	        			replies      : false,        // Include mentions <-- not in twitter api, done in plugin
-	        			retweets      : false,        // Include mentions <-- not in twitter api, done in plugin
-                ands    : '',              // All of these words	
-                phrase  : '',              // This exact phrase	
-                ors     : '',              // Any of these words	
-                nots    : '',              // None of these words	
-                tag     : '',              // This hashtag	
-                lang    : '',              // Written in language
-                from    : 'boazsender',    // From this person	
-                to      : '',              // To this person	
-                ref     : '',              // Referencing this person	
-                near    : '',              // Near this place	
-                within  : '',              // Within this distance
-                units   : '',              // Distance unit (miles or kilometers)
-                since   : '',              // Since this date	 
-                until   : '',              // Until this date	 
-                tude    : '',              // Attitude: '?' or ':)' or ':)'
-                filter  : '',              // Containing: 'links'
-                include : '',              // Include retweet?: 'retweets'
-                rpp     : 12               // Results per page
-              });
-
-				// Call twitter search for tweets from rwaldron
-				// with no mentions
-				// and display 12 results
-				$('#rwaldron').twitter({
-								from				 : 'rwaldron',
-				  	 	  limit        : 100,  // Number of tweets to get <-- not in twitter api, maps to and superseeds rpp (results per page)
-				  	 	  replies      : false, // Include replies? <-- not in twitter api, done in plugin
-				  	 	  retweets     : false // Include replies? <-- not in twitter api, done in plugin
-				      });
-      	
-      
-        //Call twitter search for tweets from bocoup
-        // and display 2 results
+        // Call twitter search for tweets including the string 'bocoup'
         $('#bocoup').twitter('bocoup');
 
-       //Call twitter search for tweets asdfghjklkjs
-       // and display 0 results
-       // and set a special message to display if no results are found
-       $('#whatever').twitter('whatever');
+        // Call twitter search for tweets including the string 'omgomg'
+				// and limit to 5 results
+				// and don't show tweets with the word 'lol'
+				// and don't show tweets with an '_' or an 's' in them
+				// and don't show @replies
+				// and don't show retweets
+				// and only show results with links
+       $('#omg').twitter({
+    			limit      : 5,     // Number of tweets to get <-- not in twitter api, maps to and superseeds rpp (results per page)
+    			exclusions : '_ s', // Strings to exclude <-- not in twitter api, done in plugin
+    			replies    : false, // Include mentions <-- not in twitter api, done in plugin
+    			retweets   : false, // Include mentions <-- not in twitter api, done in plugin
+          ors        : 'omg', // Any of these words	
+          nots       : 'lol'  // None of these words	
+				});
+
+        // Call twitter search for tweets from boazsender
+        // and limit 5 results
+				// and set special text to display if none are found
+				// and don't show @replies
+				// and don't show retweets
+				// and list out all the possible options properties for learning!
+        $('#boazsender').twitter({
+	        limit        : 5,     // Number of tweets to get                                         <-- not in twitter api, maps to and superseeds rpp (results per page)
+	        exclusions   : '@ #', // Strings to exclude                                              <-- not in twitter api, done in plugin
+	        notFoundText : 'No results found on twitter', // Text to display if no results are found <-- not in twitter api, done in plugin
+	        replies      : true,  // Include replies?                                                <-- not in twitter api, done in plugin
+	        retweets     : true,  // Include replies?                                                <-- not in twitter api, done in plugin
+	        ands    : '', // All of these words  
+	        phrase  : '', // This exact phrase 
+	        ors     : '', // Any of these words  
+	        nots    : '', // None of these words 
+	        tag     : '', // This hashtag  
+	        lang    : '', // Written in language
+          from    : 'boazsender',    // From this person	
+	        to      : '', // To this person  
+	        ref     : '', // Referencing this person 
+	        near    : '', // Near this place 
+	        within  : '', // Within this distance
+	        units   : '', // Distance unit (miles or kilometers)
+	        since   : '', // Since this date  
+	        until   : '', // Until this date  
+	        tude    : '', // Attitude: '?' or ':)' or ':)'
+	        filter  : '', // Containing: 'links'
+	        include : '', // Include retweet?: 'retweets'
+	        rpp     : 5,  // Results per page
+	        q       : ''  // Plain query
+        });
+
+				// Call twitter search for tweets from rwaldron
+        // and limit 5 results
+				// and don't show @replies
+				// and don't show retweets
+				$('#rwaldron').twitter({
+					from				 : 'rwaldron',    // From this person	
+				  limit        : 5,  // Number of tweets to get <-- not in twitter api, maps to and superseeds rpp (results per page)
+				  replies      : false, // Include replies? <-- not in twitter api, done in plugin
+				  retweets     : false // Include replies? <-- not in twitter api, done in plugin
+				});
+
+				// Call twitter search for tweets from asdasdhdajkhjfdasasd
+        // and limit 5 results
+				$('#asdasdhdajkhjfdasasd').twitter({
+					from				 : 'asdasdhdajkhjfdasasd',    // From this person	
+				  limit        : 0,  // Number of tweets to get <-- not in twitter api, maps to and superseeds rpp (results per page)
+	        notFoundText : 'this is special text to sho if no results are found.', // Text to display if no results are found <-- not in twitter api, done in plugin
+				});
       });
     </script>
     
@@ -67,6 +89,20 @@
   </head> 
   <body> 
     <h1>Twitter:</h1>
+    
+    <h2>@Bocoup:</h2>
+    <div id="bocoup" class="twitter-posts">
+      <h3>Loading Tweets From The Cloud With AJAX HTML5...</h3>
+    </div>
+    
+    <hr class="space" />
+
+    <h2>'omg':</h2>
+    <div id="omg" class="twitter-posts">
+      <h3>Loading Tweets From The Cloud With AJAX HTML5...</h3>
+    </div>
+
+    <hr class="space" />
     
     <h2>@BoazSender</h2>
     <div id="boazsender" class="twitter-posts">
@@ -82,17 +118,10 @@
 
     <hr class="space" />
 
-    <h2>@Bocoup:</h2>
-    <div id="bocoup" class="twitter-posts">
+    <h2>@asdasdhdajkhjfdasasd</h2>
+    <div id="asdasdhdajkhjfdasasd" class="twitter-posts">
       <h3>Loading Tweets From The Cloud With AJAX HTML5...</h3>
     </div>
-    
-    <hr class="space" />
 
-    <h2>@whatever:</h2>
-    <div id="whatever" class="twitter-posts">
-      <h3>Loading Tweets From The Cloud With AJAX HTML5...</h3>
-    </div>
-    
   </body> 
 </html>
