@@ -33,29 +33,31 @@ $(function(){
   module("$.twitter()");
   test("Test the async", function() {
     
-    stop(1000);
+    stop();
+  
     $.twitter('foo', function(tweets){
       equals( 'object', (typeof tweets), "$.twitter('foo') returns and object" );
-      start();
+  
     })
 
-    stop(1000);
     $.twitter({from : 'mediatemple'}, function(tweets){
       equals( 'mediatemple', tweets.results[0].from_user, "$.twitter({from : 'mediatemple'}) returns tweets from @mediatemple" );
-      start();
+  
     })
     
-    stop(1000);
     $.twitter({from : 'mediatemple', replies: false}, function(tweets){
       equals( 'mediatemple', tweets.results[0].from_user, "$.twitter({from : 'mediatemple'}) returns tweets from @mediatemple with replies set to false" );
-      start();
+  
     })
     
-    stop(1000);
     $.twitter({from : 'mediatemple', retweets: false}, function(tweets){
       equals( 'mediatemple', tweets.results[0].from_user, "$.twitter({from : 'mediatemple'}) returns tweets from @mediatemple with retweets set to false" );
-      start();
+  
     })
+    
+    setTimeout(function(){
+      start();
+    }, 2000);    
     
   });
 
