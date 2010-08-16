@@ -124,25 +124,25 @@ $(function(){
   test("Test no replies, no retweets", function() {
     
     var $li = $('#testlist5 ul li'), 
-        _li = [],
-        _rp = [],
-        _rt = [];
+        tweets    = [],
+        replies   = [],
+        retweets  = [];
     
     for ( var i = 0; i < $li.length; i++ ) {
-      _li.push( $.trim($( $li[i] ).text().split(':')[1]) );
+      tweets.push( $.trim($( $li[i] ).text().split(':')[1]) );
       
-      if ( _li[i].indexOf('RT') === 0 ) {
-        _rt.push(true);
+      if ( tweets[i].indexOf('RT') === 0 ) {
+        retweets.push(true);
       }
 
-      if ( _li[i].indexOf('@') === 0 ) {
-        _rp.push(true);
+      if ( tweets[i].indexOf('@') === 0 ) {
+        replies.push(true);
       }
     }
     
-    equals( 4, _li.length, 'There are four tweets' );
-    equals( 0, _rt.length, 'There are no Retweets' );
-    equals( 0, _rp.length, 'There are no Replies' );
+    equals( 4, tweets.length, 'There are four tweets' );
+    equals( 0, retweets.length, 'There are no Retweets' );
+    equals( 0, replies.length, 'There are no Replies' );
     
   });
 
