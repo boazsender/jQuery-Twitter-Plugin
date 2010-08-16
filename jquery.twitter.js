@@ -62,7 +62,7 @@
 
       // If there are exclusions, or replies or retweets are set to false, multiply the results to ask for from twitter by ten
       // We need to do this so that we have some meat to work with if the exclusions are common
-      query.rpp = query.exclusions || !query.replies || !query.retweets  ? (options.rpp * 10) : query.rpp;      
+      query.rpp = query.exclusions || !query.replies || !query.retweets  ? (query.rpp * 10) : query.rpp;      
 
     }
     
