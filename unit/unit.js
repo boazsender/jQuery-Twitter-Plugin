@@ -30,12 +30,37 @@ $(function(){
     rpp     : 4               // Results per page
   });
   
-  module("Basic Tests");
+  module("$.twitter()");
+  test("Test the signatures", function() {
+    
+    stop(10000);
+    $.twitter('foo', function(tweets){
+      equals( 'object', (typeof tweets), "$.twitter('foo') returns and object" );
+      start();
+    })
+
+    stop(10000);
+    $.twitter({from : 'mediatemple'}, function(tweets){
+      equals( 'mediatemple', tweets.results[0].from_user, "$.twitter({from : 'mediatemple'}) returns tweets from @mediatemple" );
+      start();
+    })
+    
+  });
+
+
+  test("Test the signatures", function() {
+    
+    ok($.isFunction($.twitter), "$.twitter exists and is a function" );
+    
+    equals( false, $.twitter(), "$.twitter() returns false if you pass it nothing" );
+
+  });
+
+  module("$.fn.twitter()");
   test("Test the signatures", function() {
     
     ok($.isFunction($.fn.twitter), "$.fn.twitter exists and is a function" );
     
-    //console.log(typeof $.fn.twitter());
     equals( 'object', (typeof $.fn.twitter({})), "$.fn.twitter({}) returns and object" );
     equals( 'string', (typeof $.fn.twitter({}).selector), "$.fn.twitter({}) returns and object" );
 
@@ -108,4 +133,5 @@ $(function(){
     equals( 0, _rp.length, 'There are no Replies' );
     
   });
+
 });
