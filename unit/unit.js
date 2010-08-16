@@ -1,7 +1,5 @@
 $(function(){
-  
   var flags = [];
-
 
   $('#testlist1').twitter({
     from:'mediatemple',
@@ -17,33 +15,20 @@ $(function(){
   $('#testlist3').twitter('ikjn gt oidfbgjldkfobnidfjoh;bikdjfkbhjfldldfj');
   
   $('#testlist4').twitter({
-          ands    : 'I',           // All of these words  
-          phrase  : '',            // This exact phrase 
-          ors     : 'lol rotfl',   // Any of these words  
-          nots    : 'dirty',       // None of these words 
-          tag     : 'omg',         // This hashtag  
-          lang    : '',              // Written in language
-          from    : '',              // From this person  
-          to      : '',              // To this person  
-          ref     : '',              // Referencing this person 
-          near    : '',              // Near this place 
-          within  : '',              // Within this distance
-          units   : '',              // Distance unit (miles or kilometers)
-          since   : '',              // Since this date  
-          until   : '',              // Until this date  
-          tude    : '',              // Attitude: '?' or ':)' or ':)'
-          filter  : '',              // Containing: 'links'
-          include : '',              // Include retweet?: 'retweets'
-          rpp     : 4                // Results per page
-        });
-
+    ands    : 'I',           // All of these words  
+    phrase  : '',            // This exact phrase 
+    ors     : 'lol rotfl',   // Any of these words  
+    nots    : 'dirty',       // None of these words 
+    tag     : 'omg',         // This hashtag  
+    rpp     : 4                // Results per page
+  });
 
   $('#testlist5').twitter({
-          from    : 'rwaldron',              // From this person  
-          replies:  false,
-          retweets: false,
-          rpp     : 4                // Results per page
-        });
+    from    : 'rwaldron',     // From this person  
+    replies:  false,
+    retweets: false,
+    rpp     : 4               // Results per page
+  });
   
   module("Basic Tests");
   test("Test the signatures", function() {
@@ -66,7 +51,6 @@ $(function(){
     equals( 'object', (typeof $.fn.twitter(undefined)), "$.fn.twitter(null) returns and object" );
     equals( 'string', (typeof $.fn.twitter(undefined).selector), "$.fn.twitter(null) returns and object" );    
 
-    
   });
   test("Test twitter list that is built", function() {
   
@@ -93,13 +77,11 @@ $(function(){
   });
   test("Test a few of the cases for the object style signature", function() {
     
-    equals( null, $('#testlist4').text().match(/dirty/), "dirty should not show up" );
+    equals( null, $('#testlist4').text().match(/dirty/), "'dirty' should not show up" );
     
-    equals( 'I', $('#testlist4').text().match(/I/), "dirty should not show up" );
+    equals( 'I', $('#testlist4').text().match(/I/), "'I' should show up in testlist 4" );
     
-    equals( 'omg', $('#testlist4').text().match(/omg/), "dirty should not show up" );
-    
-    
+    equals( 'omg', $('#testlist4').text().toLowerCase().match(/omg/), "'omg' should show up in testlist 4" );
   });
 
   test("Test no replies, no retweets", function() {
@@ -108,7 +90,6 @@ $(function(){
         _li = [],
         _rp = [],
         _rt = [];
-    
     
     for ( var i = 0; i < $li.length; i++ ) {
       _li.push( $.trim($( $li[i] ).text().split(':')[1]) );
@@ -126,9 +107,5 @@ $(function(){
     equals( 0, _rt.length, 'There are no Retweets' );
     equals( 0, _rp.length, 'There are no Replies' );
     
-    
-    
-    
   });
-
 });
