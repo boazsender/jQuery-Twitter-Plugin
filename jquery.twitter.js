@@ -10,6 +10,7 @@
  */
 ;(function ($) {
   if ( !window.linkify ) { 
+    // we should update this to include the actual source for linkify ^RW
     $.getScript('http://github.com/cowboy/javascript-linkify/raw/master/ba-linkify.min.js');
   }
    
@@ -36,7 +37,7 @@
         exclusionsExp = new RegExp(false);
     
     // If options is a string use it as standalone query
-    if(typeof options == 'string'){
+    if ( typeof options == 'string' ){
       query = $.extend({}, $.twitter.opts, {
         q: options
       });
@@ -65,7 +66,7 @@
     }
     
     // If the list parameter is truthy (not an empty string) then do a list search
-    if ( options.list && options.from){
+    if ( options.list && options.from ) {
       $.getJSON('http://twitter.com/' + options.from + '/lists/' + options.list + '/statuses.json?callback=?', query, function(tweets){ 
         callback(tweets, query, exclusionsExp)
       });
@@ -99,10 +100,10 @@
             limitInt  = 0;
 
         // If there are results to work with 
-        if (tweets.results && tweets.results.length) {
+        if ( tweets.results && tweets.results.length ) {
 
           //  Iterate over returned tweets
-          for(var i in tweets.results){
+          for ( var i in tweets.results ) {
 
             // Cache tweet content
             var tweet         = tweets.results[i],
@@ -112,12 +113,12 @@
                 allowRetweet  = !query.retweets && tweet.text.slice(0,2) == 'RT' ? false : true;
 
             // Only proceed if allow reply is false
-            if (!allowReply) {
+            if ( !allowReply ) {
               continue;
             }
 
             // Only proceed if allow retweet is false
-            if (!allowRetweet) {
+            if ( !allowRetweet ) {
               continue;
             }
 
@@ -166,7 +167,9 @@
       });
     });
   };
-
+  
+  
+  //  TODO: change the comments to over line from end of line
   $.twitter.opts = {
         limit        : 7,     // Number of tweets to get                                         <-- not in twitter search api, maps to and supersedes rpp (results per page)
         exclusions   : '',    // Space delimited list of strings to exclude  (eg: '_ s gr @b')   <-- not in twitter search api, done in plugin
