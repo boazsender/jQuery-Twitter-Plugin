@@ -1,7 +1,9 @@
 jQuery Twitter Plugin: jquery.twitter.js
-A jQuery plugin for working with the Twitter Search API and putting twitter searches on websites with a simple syntax that follows the Twitter Search API URL parameters.
+A jQuery plugin for working with the Twitter Search API to put twitter searches on websites with a simple syntax that follows the Twitter Search API URL parameters.
 
 In addition to supporting the default Twitter Search API URL parameters, $.twitter() and $.fn.twitter() also support five options for filtering out mentions and retweets and for handling no results cases client side.
+
+The jQuery fn twitter plugin fills each element in the collection it operates on with an unordered list of twitter statuses based on the options passed in.
 
 ================================
 
