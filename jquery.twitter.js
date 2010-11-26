@@ -64,7 +64,12 @@
 
     }
     
-
+    // If the list parameter is truthy (not an empty string) then do a list search
+    if ( options.list && options.from){
+      $.getJSON('http://twitter.com/' + options.from + '/lists/' + options.list + '/statuses.json?callback=?', query, function(tweets){ 
+        callback(tweets, query, exclusionsExp)
+      });
+    }
     // Call Twitter JSONP
     $.getJSON('http://search.twitter.com/search.json?callback=?', query, function(tweets){ 
       callback(tweets, query, exclusionsExp)
@@ -145,7 +150,7 @@
             }
           }
 
-          // Append the $tweets to the DOM
+          // Inject the $tweets into the DOM
           $this.html($tweets);
 
         // Else there are no results to work with  
@@ -161,11 +166,12 @@
   };
 
   $.twitter.opts = {
-        limit        : 7,     // Number of tweets to get                                         <-- not in twitter api, maps to and supersedes rpp (results per page)
-        exclusions   : '',    // Space delimited list of strings to exclude  (eg: '_ s gr @b')   <-- not in twitter api, done in plugin
-        notFoundText : 'No results found on twitter', // Text to display if no results are found <-- not in twitter api, done in plugin
-        replies      : true,  // Include replies?                                                <-- not in twitter api, done in plugin
-        retweets     : true,  // Include replies?                                                <-- not in twitter api, done in plugin
+        limit        : 7,     // Number of tweets to get                                         <-- not in twitter search api, maps to and supersedes rpp (results per page)
+        exclusions   : '',    // Space delimited list of strings to exclude  (eg: '_ s gr @b')   <-- not in twitter search api, done in plugin
+        notFoundText : 'No results found on twitter', // Text to display if no results are found <-- not in twitter search api, done in plugin
+        replies      : true,  // Include replies?                                                <-- not in twitter search api, done in plugin
+        retweets     : true,  // Include replies?                                                <-- not in twitter search api, done in plugin
+        list         : '',    // All statuses from this list                                     <-- not in twitter search api, public method of the twitter REST API
         ands    : '', // All of these words  
         phrase  : '', // This exact phrase 
         ors     : '', // Any of these words  
