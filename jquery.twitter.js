@@ -9,7 +9,9 @@
  *
  */
 ;(function ($) {
-  $.getScript('http://github.com/cowboy/javascript-linkify/raw/master/ba-linkify.min.js');
+  if ( !window.linkify ) { 
+    $.getScript('http://github.com/cowboy/javascript-linkify/raw/master/ba-linkify.min.js');
+  }
    
   var mention   = function(str) {
         return str.replace(/[@]+[A-Za-z0-9-_]+/ig, function(username) {
