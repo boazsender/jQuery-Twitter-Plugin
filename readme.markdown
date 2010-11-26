@@ -23,3 +23,4 @@ http://benalman.com/about/license/
 
 Some regexps adapted from http://userscripts.org/scripts/review/7122
 
+Minified with JSmin: http://www.crockford.com/javascript/jsmin.html
