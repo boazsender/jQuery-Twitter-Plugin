@@ -32,38 +32,38 @@ $(function(){
   
   module("$.twitter()");
   test("Test the async", function() {
-    
-    stop();
+    expect(5);
+
+	  var count = 0;
+	  function plus() { if ( ++count == 5 ) start(); }
+
+	  stop();
+
   
     $.twitter('foo', function(tweets){
       equals( true, $.isPlainObject(tweets), "$.twitter('foo') returns and is an object" );
-  
+      plus();
     })
     
     $.twitter({from: 'F1LT3R', list: 'bocoup'}, function(tweets){
       equals( true, $.isArray(tweets), "$.twitter({from: 'F1LT3R', list: 'bocoup'}) returns and is an Array" );
-
+      plus();
     })
 
     $.twitter({from : 'mediatemple'}, function(tweets){
       equals( 'mediatemple', tweets.results[0].from_user, "$.twitter({from : 'mediatemple'}) returns tweets from @mediatemple" );
-  
+      plus();
     })
     
     $.twitter({from : 'mediatemple', replies: false}, function(tweets){
       equals( 'mediatemple', tweets.results[0].from_user, "$.twitter({from : 'mediatemple'}) returns tweets from @mediatemple with replies set to false" );
-  
+      plus();
     })
     
     $.twitter({from : 'mediatemple', retweets: false}, function(tweets){
       equals( 'mediatemple', tweets.results[0].from_user, "$.twitter({from : 'mediatemple'}) returns tweets from @mediatemple with retweets set to false" );
-  
+      plus();
     })
-    
-    setTimeout(function(){
-      start();
-    }, 2000);    
-    
   });
 
 
