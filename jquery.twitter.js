@@ -69,11 +69,13 @@
       $.getJSON('http://twitter.com/' + options.from + '/lists/' + options.list + '/statuses.json?callback=?', query, function(tweets){ 
         callback(tweets, query, exclusionsExp)
       });
+
+    // Else call Twitter JSONP
+    } else {
+      $.getJSON('http://search.twitter.com/search.json?callback=?', query, function(tweets){ 
+        callback(tweets, query, exclusionsExp)
+      });
     }
-    // Call Twitter JSONP
-    $.getJSON('http://search.twitter.com/search.json?callback=?', query, function(tweets){ 
-      callback(tweets, query, exclusionsExp)
-    });
   };
   
   $.fn.twitter = function (options) {

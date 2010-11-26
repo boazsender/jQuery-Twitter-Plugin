@@ -36,8 +36,13 @@ $(function(){
     stop();
   
     $.twitter('foo', function(tweets){
-      equals( 'object', (typeof tweets), "$.twitter('foo') returns and object" );
+      equals( true, $.isPlainObject(tweets), "$.twitter('foo') returns and is an object" );
   
+    })
+    
+    $.twitter({from: 'F1LT3R', list: 'bocoup'}, function(tweets){
+      equals( true, $.isArray(tweets), "$.twitter({from: 'F1LT3R', list: 'bocoup'}) returns and is an Array" );
+
     })
 
     $.twitter({from : 'mediatemple'}, function(tweets){
