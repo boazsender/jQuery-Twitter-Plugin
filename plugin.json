@@ -16,6 +16,7 @@
             "1.4.5" 
         ] 
     },
+    "boazsender",
     "maintainers": [
         {
             "name": "Boaz Sender",
