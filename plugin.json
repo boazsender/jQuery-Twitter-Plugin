@@ -1,21 +1,20 @@
 {
-    "docType": "",
     "name": "jQuery-Twitter-Plugin",
     "label": "jQuery Twitter Plugin",
     "license": [
         "mit",
-        "gpl"
+        "gpl" 
     ],
     "description": "A jQuery plugin for working with the Twitter Search API to put twitter searches on websites with a simple syntax that follows the Twitter Search API URL parameters.",
     "copyright": "2010 Boaz Sender",
-    version: "0.1",
+    "version": "0.1",
     "clone": "https://boazsender@github.com/boazsender/jQuery-Twitter-Plugin.git",
     "repository": "https://github.com/boazsender/jQuery-Twitter-Plugin",
     "issues": "https://github.com/boazsender/jQuery-Twitter-Plugin",
     "dependencies" : {
         "jquery/jquery" : [
-            "1.4.5"
-        ]
+            "1.4.5" 
+        ] 
     },
     "maintainers": [
         {
@@ -29,6 +28,6 @@
         {
             "name": "Nick Cammarata",
             "twitter": "nicklovescode" 
-        }
+        } 
     ]
 }
