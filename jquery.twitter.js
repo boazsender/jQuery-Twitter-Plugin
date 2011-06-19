@@ -47,7 +47,7 @@
 
       // If no limit is set, make the limit the rpp
       options.limit = options.limit ? options.limit : options.rpp;
-
+			
       // If there are exlusions, turn them into a regex string
       exclusionsStr = options.exclusions ? options.exclusions.replace(' ', '|') : false;
 
@@ -120,16 +120,20 @@
             }  
 
             // Create and cache new LI
-            $('<li/>', {
+            var $tweet = $('<li/>', {
               className : 'tweet'
-            })
-            // Make the avatar, and append it to the $tweet
-            .append($('<a/>', {
-              href: 'http://twitter.com/' + tweet.from_user,
-              html: '<img src="' + tweet.profile_image_url + '"/>'
-            }))
+            });
+						
+						// Make the avatar, and append it to the $tweet
+            if (query.avatar == true) {
+	            $tweet.append($('<a/>', {
+	              href: 'http://twitter.com/' + tweet.from_user,
+	              html: '<img src="' + tweet.profile_image_url + '"/>'
+	            }))
+            }
+            
             // Make the tweet text, and append it to the $tweet, then to the parent
-            .append($('<span>', {
+            $tweet.append($('<span>', {
               className: 'content',
               html: '<a href="http://twitter.com/' + tweet.from_user + '">@' + tweet.from_user + '</a>: ' + mention(hashtags(linkify(tweet.text)))
             }))
@@ -184,6 +188,7 @@
         filter  : '', // Containing: 'links'
         include : '', // Include retweet?: 'retweets'
         rpp     : 5,  // Results per page
-        q       : ''  // Default query
+        q       : '',  // Default query
+        avatar  : true // Add an avatar image of the user
       }
 })(jQuery);

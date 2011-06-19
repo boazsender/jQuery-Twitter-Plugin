@@ -27,7 +27,8 @@ $(function(){
     from    : 'rwaldron',     // From this person  
     replies:  false,
     retweets: false,
-    rpp     : 4               // Results per page
+    rpp     : 4,         // Results per page
+    avatar  : false
   });
   
   module("$.twitter()");
@@ -110,6 +111,8 @@ $(function(){
     equals( 'No results found on twitter', $('#testlist3').text(), "The failed search should default to 'No results found on twitter'" );
     
     ok($('#testlist1').children().find('a').find('img').length, "Make sure the user avatar is present and inside of an anchor" );
+		
+    equals(0, $('#testlist5').children().find('a').find('img').length, "Make sure the user avatar is not present inside of an anchor when avatar option is set to false")
     
     ok($('#testlist1').children().find('span').length, "Make sure the tweet is there" );
     
