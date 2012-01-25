@@ -129,10 +129,10 @@
 
             // Create and cache new LI
             var $tweet = $('<li/>', {
-              className : 'tweet'
+              'class': 'tweet'
             });
-						
-						// Make the avatar, and append it to the $tweet
+
+            // Make the avatar, and append it to the $tweet
             if (query.avatar == true) {
 	            $tweet.append($('<a/>', {
 	              href: 'http://twitter.com/' + tweet.from_user,
@@ -142,7 +142,7 @@
             
             // Make the tweet text, and append it to the $tweet, then to the parent
             $tweet.append($('<span>', {
-              className: 'content',
+              'class': 'content',
               html: '<a href="http://twitter.com/' + tweet.from_user + '">@' + tweet.from_user + '</a>: ' + mention(hashtags(linkify(tweet.text)))
             }))
             // Append tweet to the $tweets ul
@@ -164,7 +164,7 @@
         } else {
           // Update the DOM to reflect that no results were found
           $this.html($('<h3/>', {
-            className: 'twitter-notFound',
+            'class': 'twitter-notFound',
             text: query.notFoundText
           }));
         }
