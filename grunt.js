@@ -11,7 +11,7 @@ config.init({
     'dist/jquery.twitter.js': ['<banner>', '<file_strip_banner:src/jquery.twitter.js>']
   },
   min: {
-    'dist/jquery.twitter.min.js': ['<banner>', 'dist/jquery.twitter.js']
+    'dist/jquery.twitter.min.js': ['<banner>', 'src/jquery.twitter.js']
   },
   qunit: {
     files: ['test/**/*.html']
