@@ -10,16 +10,17 @@
  */
 ;(function ($) {
 
-  var mention = function(str) {
-        return str.replace("/[@]+[A-Za-z0-9-_]+/ig", function(username) {
-          return username.link("http://twitter.com/"+ username.replace("@","") );
-        });
-      },
-      hashtags = function(str) {
-        return str.replace("/[#]+[A-Za-z0-9-_]+/ig", function(tag) {
-          return tag.link("http://search.twitter.com/search?q="+tag.replace("#","%23"));
-        });
-      };
+  var
+  mention = function( str ) {
+    return str.replace("/[@]+[A-Za-z0-9-_]+/ig", function( username ) {
+      return username.link("http://twitter.com/"+ username.replace("@","") );
+    });
+  },
+  hashtags = function( str ) {
+    return str.replace("/[#]+[A-Za-z0-9-_]+/ig", function( tag ) {
+      return tag.link("http://search.twitter.com/search?q="+tag.replace("#","%23"));
+    });
+  };
 
   $.twitter = function (options, callback) {
     // Fail if the options arg is not set
@@ -35,7 +36,7 @@
         exclusionsExp = new RegExp(false);
 
     // If options is a string use it as standalone query
-    if(typeof options === "string"){
+    if ( typeof options === "string" ) {
       query = $.extend({}, $.twitter.opts, {
         q: options
       });
@@ -51,7 +52,7 @@
       exclusionsStr = options.exclusions ? options.exclusions.replace(" ", "|") : false;
 
       // If there are exlusions, turn the regex string we just made into a RegExp
-      exclusionsExp = exclusionsStr ? new RegExp(exclusionsStr) : false;
+      exclusionsExp = exclusionsStr ? new RegExp( exclusionsStr ) : false;
 
       // Make a new object that is a merger of the options passed in with the default $.twitter.opts object
       // and assign it to the query variable
@@ -70,7 +71,7 @@
     });
   };
 
-  $.fn.twitter = function (options) {
+  $.fn.twitter = function( options ) {
     // Fail gracefully if the options arg is not set
     // return the jQuery obj so that chaining does not break
     if ( !options ) {
@@ -82,19 +83,20 @@
       // Cache `this`
       var $this = $(this);
 
-      $.twitter(options, function(tweets, query, exclusionsExp){
+      $.twitter(options, function( tweets, query, exclusionsExp ) {
         //Create and cache a new UL
         var $tweets = $("<ul>"),
             // Create a counter variable to count up how many tweets we have rendered
             // unfortunately we have to do this, because exclusions, retweet booleans and replies booleans
             // are not supported by the Twitter Search API
-            limitInt = 0;
+            limitInt = 0,
+            i;
 
         // If there are results to work with
-        if (tweets.results && tweets.results.length) {
+        if ( tweets.results && tweets.results.length ) {
 
           //  Iterate over returned tweets
-          for(var i in tweets.results){
+          for ( i in tweets.results ) {
 
             // Cache tweet content
             var tweet = tweets.results[i],
@@ -104,12 +106,12 @@
                 allowRetweet = !query.retweets && tweet.text.slice(0,2) === "RT" ? false : true;
 
             // Only proceed if allow reply is false
-            if (!allowReply) {
+            if ( !allowReply ) {
               continue;
             }
 
             // Only proceed if allow retweet is false
-            if (!allowRetweet) {
+            if ( !allowRetweet ) {
               continue;
             }
 
@@ -124,7 +126,7 @@
             });
 
             // Make the avatar, and append it to the $tweet
-            if (query.avatar === true) {
+            if ( query.avatar === true ) {
               $tweet.append($("<a/>", {
                 href: "http://twitter.com/" + tweet.from_user,
                 html: "<img src='" + tweet.profile_image_url + "'/>"
@@ -164,15 +166,20 @@
   };
 
   $.twitter.opts = {
-    // Number of tweets to get <-- not in twitter search api, maps to and supersedes rpp (results per page)
+    // Number of tweets to get
+    // not in twitter search api, maps to and supersedes rpp (results per page)
     limit: 7,
-    // Space delimited list of strings to exclude  (eg: "_ s gr @b")   <-- not in twitter search api, done in plugin
+    // Space delimited list of strings to exclude  (eg: "_ s gr @b")
+    // not in twitter search api, done in plugin
     exclusions: "",
-    // Text to display if no results are found <-- not in twitter search api, done in plugin
+    // Text to display if no results are found
+    // not in twitter search api, done in plugin
     notFoundText: "No results found on twitter",
-    // Include replies?   <-- not in twitter search api, done in plugin
+    // Include replies?
+    // not in twitter search api, done in plugin
     replies: true,
-    // Include replies? <-- not in twitter search api, done in plugin
+    // Include replies?
+    // not in twitter search api, done in plugin
     retweets: true,
     // All of these words
     ands: "",
