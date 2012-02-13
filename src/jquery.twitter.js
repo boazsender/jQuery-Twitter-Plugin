@@ -8,7 +8,8 @@
  * http://code.bocoup.com/license/
  *
  */
-;(function ($) {
+var linkify = linkify || function() {};
+;(function($, linkify) {
 
   var
   mention = function( str ) {
@@ -222,4 +223,4 @@
     // Add an avatar image of the user
     avatar: true
   };
-}(jQuery));
+}(jQuery, linkify));
