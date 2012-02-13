@@ -28,12 +28,15 @@ You can see a prettyr thorough overview of this plugins usage from [this Gist](h
 
 ### Simple Syntax:
 Passing in a string to the plugin simply performs a search with that string.
+
 ```
 $('selector').twitter('search terms');
 ```
 
 ### Verbose Syntax:
 There are lots of options, so you could do something more like:
+
+```
 $('selector').twitter({
   // From this person
   from : 'BoazSender',
@@ -48,6 +51,7 @@ $('selector').twitter({
   // don't include user avatars in the list.
   avatar : false
 });
+```
 
 ## Documentation
 The jQuery Twitter Plugin provides two methods and a public default options object:
@@ -60,6 +64,7 @@ options: the string or object used to configure the search
 callback: the function to run when the results come back from twitter. Three arguments are passed to this callback(tweets, query, exclusionsExp)
 
 This method allows you to get twitter results and work with the JSON response. Fore example:
+
 ```
 $.twitter({from: 'BoazSender', replies : false}, function(tweets){
   console.log(tweets);
