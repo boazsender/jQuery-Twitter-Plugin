@@ -9,8 +9,8 @@ In addition to supporting the default Twitter Search API URL parameters, $.twitt
 ## Getting Started
 Download the [production version][min] or the [development version][max].
 
-[min]: https://raw.github.com/boazsender/jquery.twitter/master/dist/jquery.twitter.min.js
-[max]: https://raw.github.com/boazsender/jquery.twitter/master/dist/jquery.twitter.js
+[min]: https://raw.github.com/boazsender/jQuery-Twitter-Plugin/master/dist/jquery.twitter.min.js
+[max]: https://raw.github.com/boazsender/jQuery-Twitter-Plugin/master/dist/jquery.twitter.js
 
 In the browser:
 
