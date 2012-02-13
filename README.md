@@ -32,9 +32,11 @@ Documentation available at http://code.bocoup.com/jquery-twitter-plugin/
 See documentation at http://code.bocoup.com/jquery-twitter-plugin/
 
 ## Contributing
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [grunt](https://github.com/cowboy/grunt).
+To get started contributing to jQuery.twitter.js, install [grunt](https://github.com/cowboy/grunt) globally (```$ npm install grunt -g ```).
 
-_Also, please don't edit files in the "dist" subdirectory as they are generated via grunt. You'll find source code in the "src" subdirectory!_
+This project generally follows [Idiomatic.js](https://github.com/rwldrn/idiomatic.js) from Rick Waldron, take care to maintain the existing coding style. Add *unit tests* and *written documentation* for any new or changed functionality, and make sure all your code passes this project's grunt. This project's [gruntfile](https://github.com/boazsender/jQuery-Twitter-Plugin/blob/master/grunt.js) was generated with ```$ grunt init:jquery```.
+
+Do not edit files in the "dist" directory as they are generated via grunt. You'll find source code in the "src" subdirectory. Work inside of the src directory, and use grunt to concat/min/test/lint the code before making a pull request. Running ```$ grunt watch``` from the root of this project will do this for you as you go.
 
 ## Release History
 _(Nothing yet)_
