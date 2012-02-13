@@ -164,30 +164,55 @@
   };
 
   $.twitter.opts = {
-    limit        : 7,     // Number of tweets to get                                         <-- not in twitter search api, maps to and supersedes rpp (results per page)
-    exclusions   : "",    // Space delimited list of strings to exclude  (eg: "_ s gr @b")   <-- not in twitter search api, done in plugin
-    notFoundText : "No results found on twitter", // Text to display if no results are found <-- not in twitter search api, done in plugin
-    replies      : true,  // Include replies?                                                <-- not in twitter search api, done in plugin
-    retweets     : true,  // Include replies?                                                <-- not in twitter search api, done in plugin
-    ands    : "", // All of these words
-    phrase  : "", // This exact phrase
-    ors     : "", // Any of these words
-    nots    : "", // None of these words
-    tag     : "", // This hashtag
-    lang    : "", // Written in language
-    from    : "", // From this person
-    to      : "", // To this person
-    ref     : "", // Referencing this person
-    near    : "", // Near this place
-    within  : "", // Within this distance
-    units   : "", // Distance unit (miles or kilometers)
-    since   : "", // Since this date
-    until   : "", // Until this date
-    tude    : "", // Attitude: "?" or ":)" or ":)"
-    filter  : "", // Containing: "links"
-    include : "", // Include retweet?: "retweets"
-    rpp     : 5,  // Results per page
-    q       : "",  // Default query
-    avatar  : true // Add an avatar image of the user
+    // Number of tweets to get <-- not in twitter search api, maps to and supersedes rpp (results per page)
+    limit: 7,
+    // Space delimited list of strings to exclude  (eg: "_ s gr @b")   <-- not in twitter search api, done in plugin
+    exclusions: "",
+    // Text to display if no results are found <-- not in twitter search api, done in plugin
+    notFoundText: "No results found on twitter",
+    // Include replies?   <-- not in twitter search api, done in plugin
+    replies: true,
+    // Include replies? <-- not in twitter search api, done in plugin
+    retweets: true,
+    // All of these words
+    ands: "",
+    // This exact phrase
+    phrase: "",
+    // Any of these words
+    ors : "",
+    // None of these words
+    nots: "",
+    // This hashtag
+    tag : "",
+    // Written in language
+    lang: "",
+    // From this person
+    from: "",
+    // To this person
+    to: "",
+    // Referencing this person
+    ref: "",
+    // Near this place
+    near: "",
+    // Within this distance
+    within: "",
+    // Distance unit (miles or kilometers)
+    units: "",
+    // Since this date
+    since: "",
+    // Until this date
+    until: "",
+    // Attitude: "?" or :)" or ":)"
+    tude: "",
+    // Containing: "links"
+    filter: "",
+    // Include retweet?: "retweets"
+    include: "",
+    // Results per page
+    rpp: 5,
+    // Default query
+    q: "",
+    // Add an avatar image of the user
+    avatar: true
   };
 }(jQuery));
