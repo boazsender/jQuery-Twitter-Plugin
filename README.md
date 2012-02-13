@@ -17,6 +17,11 @@ In the browser:
 ```html
 <script src="http://code.jquery.com/jquery.js"></script>
 <script src="jquery.twitter.min.js"></script>
+<style type="text/css">
+  .twitter-posts li {margin-bottom: 10px; font-size: 12px; clear: both; list-style-type:none;}
+  .twitter-posts li img {float:left; margin:0px 10px 10px 0px;border:1px solid #c2c2c2; -moz-box-shadow: 0px 0px 4px #c2c2c2; -webkit-box-shadow: 0px 0px 4px #c2c2c2; box-shadow: 0px 0px 4px #c2c2c2;}
+  .twitter-posts li a {text-decoration:none; color: #009;}
+</style>
 <script>
   $('myselector').twitter({from: 'boazsender', replies: false})
 </script>
