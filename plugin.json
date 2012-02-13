@@ -6,7 +6,7 @@
         "gpl" 
     ],
     "description": "A jQuery plugin for working with the Twitter Search API to put twitter searches on websites with a simple syntax that follows the Twitter Search API URL parameters.",
-    "copyright": "2010 Boaz Sender",
+    "copyright": "2012 Boaz Sender",
     "version": "0.1",
     "clone": "https://boazsender@github.com/boazsender/jQuery-Twitter-Plugin.git",
     "repository": "https://github.com/boazsender/jQuery-Twitter-Plugin",
@@ -25,10 +25,6 @@
         {
             "name": "Rick Waldron",
             "twitter": "rwaldron" 
-        },
-        {
-            "name": "Nick Cammarata",
-            "twitter": "nicklovescode" 
-        } 
+        }
     ]
 }

@@ -3,7 +3,7 @@
   "title": "jQuery Twitter Plugin",
   "description": "A jQuery plugin for putting twitter searches on website",
   "version": "0.2.0",
-  "homepage": "http://code.bocoup.com/jquery-twitter-plugin/",
+  "homepage": "https://github.com/boazsender/jQuery-Twitter-Plugin",
   "author": {
     "name": "Boaz Sender",
     "email": "boaz@bocoup.com",
@@ -19,11 +19,11 @@
   "licenses": [
     {
       "type": "MIT",
-      "url": "http://code.bocoup.com/jquery-twitter-plugin//blob/master/LICENSE-MIT"
+      "url": "https://github.com/boazsender/jQuery-Twitter-Plugin/blob/master/LICENSE-MIT"
     },
     {
       "type": "GPL",
-      "url": "http://code.bocoup.com/jquery-twitter-plugin//blob/master/LICENSE-GPL"
+      "url": "https://github.com/boazsender/jQuery-Twitter-Plugin/blob/master/LICENSE-GPL"
     }
   ],
   "dependencies": {},
