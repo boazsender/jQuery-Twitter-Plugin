@@ -10,8 +10,8 @@ The jQuery fn twitter plugin fills each element in the collection it operates on
 ## Getting Started
 Download the [production version][min] or the [development version][max].
 
-[min]: https://raw.github.com/cowboy/jquery.twitter/master/dist/jquery.twitter.min.js
-[max]: https://raw.github.com/cowboy/jquery.twitter/master/dist/jquery.twitter.js
+[min]: https://raw.github.com/boazsender/jquery.twitter/master/dist/jquery.twitter.min.js
+[max]: https://raw.github.com/boazsender/jquery.twitter/master/dist/jquery.twitter.js
 
 In the browser:
 
