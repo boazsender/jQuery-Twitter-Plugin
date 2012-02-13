@@ -200,5 +200,5 @@
         rpp     : 5,  // Results per page
         q       : '',  // Default query
         avatar  : true // Add an avatar image of the user
-      }
-})(jQuery);
+      };
+}(jQuery));
