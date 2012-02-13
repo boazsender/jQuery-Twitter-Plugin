@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>jquery.twitter Test Suite</title>
+  <link rel="stylesheet" href="../libs/qunit/qunit.css" media="screen">
+  <!-- When run from within grunt, the local jQuery is loaded. -->
+  <script type="text/grunt" src="../libs/jquery/jquery.js"></script>
+  <!-- When run in-browser, load the latest jQuery from CDN, falling back to the local jQuery on error. -->
+  <script>window.jQuery||document.write('<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"><\/script>')</script>
+  <script>window.jQuery||document.write('<script src="../libs/jquery/jquery.js"><\/script>')</script>
+  <!-- This ensures that your code relies on jQuery, not $. -->
+  <script>$.noConflict()</script>
+  <!-- Load local QUnit (1.2.0 or newer). -->
+  <script src="../libs/qunit/qunit.js"></script>
+  <!-- Load local lib and tests. -->
+  <script src="jquery.twitter_test.js"></script>
+  <script src="../dist/jquery.twitter.min.js"></script>
+</head>
+<body>
+  <h1 id="qunit-header">jquery.twitter Test Suite</h1>
+  <h2 id="qunit-banner"></h2>
+  <div id="qunit-testrunner-toolbar"></div>
+  <h2 id="qunit-userAgent"></h2>
+  <ol id="qunit-tests"></ol>
+  <div id="qunit-fixture">
+    <div class="twitter-posts">
+      <h5>#testlist1</h5>
+      <div id="testlist1" ></div>
+      <hr class="space">
+      <h5>#testlist2</h5>
+      <div id="testlist2" ></div>
+      <hr class="space">
+      <h5>#testlist3</h5>
+      <div id="testlist3" ></div>
+      <hr class="space">
+      <h5>#testlist4</h5>
+      <div id="testlist4" ></div>  
+      <hr class="space">
+      <h5>#testlist5</h5>
+      <div id="testlist5" ></div>  
+    </div>
+  </div>
+</body>
+</html>
