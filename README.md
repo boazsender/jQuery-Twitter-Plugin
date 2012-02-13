@@ -59,9 +59,9 @@ The jQuery Twitter Plugin provides two methods and a public default options obje
 ### Static Method
 $.twitter(options, callback)
 
-_*options*: the string or object used to configure the search_
+_*options**: the string or object used to configure the search_
 
-_*callback*: the function to run when the results come back from twitter. Three arguments are passed to this callback(tweets, query, exclusionsExp)_
+_*callback**: the function to run when the results come back from twitter. Three arguments are passed to this callback(tweets, query, exclusionsExp)_
 
 This method allows you to get twitter results and work with the JSON response. Fore example:
 
@@ -74,7 +74,7 @@ $.twitter({from: 'BoazSender', replies : false}, function(tweets){
 ### jQuery Collection Method
 $.fn.twitter(options)
 
-_*options*: the string or object used to configure the search_
+_*options**: the string or object used to configure the search_
 
 This method uses $.twitter() internally to go and get the tweets you ask for, and render them in a ```<ul>``` within each element in the jQuery collection you call it on. For example:
 
@@ -104,35 +104,35 @@ $.extend($.twitter.options, {
 ### Standard Twitter Search API options
 You can pass the following default Twitter Search API Parameters to $.fn.twitter() as properties of the options object:
 
-*q*: Default query
-*ands*: All of these words
-*phrase*: This exact phrase
-*ors*: Any of these words
-*nots*: None of these word
-*tag*: This hashtag
-*lang*: Written in language
-*from*: From this person
-*to*: To this person
-*ref*: Referencing this person
-*near*: Near this place
-*within*: Within this distance
-*units*: Distance unit (miles or kilometers)
-*since*: Since this date
-*until*: Until this date
-*tude*: Attitude: '?' or ':)' or ':('
-*filter*: Containing*: 'links'
-*include*: Include retweet?*: 'retweets'
-*rpp*: Results per page
+* **q**: Default query
+* **ands**: All of these words
+* **phrase**: This exact phrase
+* **ors**: Any of these words
+* **nots**: None of these word
+* **tag**: This hashtag
+* **lang**: Written in language
+* **from**: From this person
+* **to**: To this person
+* **ref**: Referencing this person
+* **near**: Near this place
+* **within**: Within this distance
+* **units**: Distance unit (miles or kilometers)
+* **since**: Since this date
+* **until**: Until this date
+* **tude**: Attitude: '?' or ':)' or ':('
+* **filter**: Containing**: 'links'
+* **include**: Include retweet?**: 'retweets'
+* **rpp**: Results per page
 
 ### Non Standard Options
 In addition to supporting the default Twitter Search API URL parameters, $.fn.twitter() also supports five of it's own options for filtering out mentions and retweets and for handling no results cases client side.
 
-*limit*: Number of tweets to get. Maps to and supersedes rpp (results per page).
-*exclusions*: Space delimited list of strings (eg: '_ s gr @b'). Use this to exclude tweets containing strings that are part of a word
-*avatar*: Include user avatars? true by default. (Boolean)
-*notFoundText*: Text to display if no results are found
-*replies*: Include replies? (Boolean)
-*retweets*: Include retweets (Boolean)
+* **limit**: Number of tweets to get. Maps to and supersedes rpp (results per page).
+* **exclusions**: Space delimited list of strings (eg: '_ s gr @b'). Use this to exclude tweets containing strings that are part of a word
+* **avatar**: Include user avatars? true by default. (Boolean)
+* **notFoundText**: Text to display if no results are found
+* **replies**: Include replies? (Boolean)
+* **retweets**: Include retweets (Boolean)
 
 
 ## Contributing
