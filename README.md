@@ -23,8 +23,6 @@ $('.myUL').twitter({from: 'boazsender', replies: false})
 </script>
 ```
 
-Make sure to checkout the examples in the index file.
-
 ## Documentation
 Documentation available at http://code.bocoup.com/jquery-twitter-plugin/
 
