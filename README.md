@@ -146,9 +146,10 @@ This project generally follows [Idiomatic.js](https://github.com/rwldrn/idiomati
 Do not edit files in the "dist" directory as they are generated via grunt. You'll find source code in the "src" subdirectory. Work inside of the src directory, and use grunt to concat/min/test/lint the code before making a pull request. Running ```$ grunt watch``` from the root of this project will do this for you as you go.
 
 ## Release History
-2012/01/22 - v0.2.0 - Moved to grunt based project organization and concat/min/lint/test, started passing lint.
-2012/01/21 - v0.1.1 - Upgraded to jQuery 1.7.1, fixed classname bug, got rid of all globals.
-2011/08/11 - v0.1.0 - Initial release.
+
+* 2012/01/22 - v0.2.0 - Moved to grunt based project organization and concat/min/lint/test, started passing lint.
+* 2012/01/21 - v0.1.1 - Upgraded to jQuery 1.7.1, fixed classname bug, got rid of all globals.
+* 2011/08/11 - v0.1.0 - Initial release.
 
 ## License
 Copyright (c) 2012 Boaz Sender  
