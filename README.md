@@ -1,10 +1,10 @@
 # jQuery Twitter Plugin
 
-A jQuery plugin for working with the Twitter Search API to put twitter searches on websites with a simple syntax that follows the Twitter Search API URL parameters.
+A jQuery plugin for working with the Twitter Search API to put twitter searches on websites. jQuery.twitter has a simple syntax that follows the Twitter Search API URL parameters.
 
 In addition to supporting the default Twitter Search API URL parameters, $.twitter() and $.fn.twitter() also support five options for filtering out mentions and retweets and for handling no results cases client side.
 
-The jQuery fn twitter plugin fills each element in the collection it operates on with an unordered list of twitter statuses based on the options passed in.
+```$.fn.twitter``` creates a ```<ul>``` of tweets for you, and puts it in the DOM. This plugin comes with a static ```$.twitter``` which ```$.fn.twitter``` uses under the hood for doing twitter searches.
 
 
 ## Getting Started
@@ -16,20 +16,140 @@ Download the [production version][min] or the [development version][max].
 In the browser:
 
 ```html
-<script src="jquery.js"></script>
-<script src="dist/jquery.twitter.min.js"></script>
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="jquery.twitter.min.js"></script>
 <script>
-$('.myUL').twitter({from: 'boazsender', replies: false})
+  $('myselector').twitter({from: 'boazsender', replies: false})
 </script>
 ```
 
-Make sure to checkout the examples in the index file.
+## Examples
+### Simple Syntax:
+Passing in a string to the plugin simply performs a search with that string.
+```
+$('selector').twitter('search terms');
+```
+
+### Verbose Syntax:
+There are lots of options, so you could do something more like:
+$('selector').twitter({
+  // From this person
+  from : 'BoazSender',
+  // Include @replies?
+  replies : false,
+  // All of these words
+  ands : 'jquery bocoup',
+  // Any of these words	
+  ors : 'gangster javascript',
+  // None of these words
+  nots : 'dirty words',
+  // don't include user avatars in the list.
+  avatar : false
+});
 
 ## Documentation
-Documentation available at http://code.bocoup.com/jquery-twitter-plugin/
+The jQuery Twitter Plugin provides two methods and a public default options object:
 
-## Examples
-See documentation at http://code.bocoup.com/jquery-twitter-plugin/
+### Static Method
+$.twitter(options, callback)
+
+options: the string or object used to configure the search
+
+callback: the function to run when the results come back from twitter. Three arguments are passed to this callback(tweets, query, exclusionsExp)
+
+This method allows you to get twitter results and work with the JSON response. Fore example:
+```
+$.twitter({from: 'BoazSender', replies : false}, function(tweets){
+  console.log(tweets);
+});
+```
+
+### jQuery Collection Method
+$.fn.twitter(options)
+
+options: the string or object used to configure the search
+
+This method uses $.twitter() internally to go and get the tweets you ask for, and render them in a <ul> within each element in the jQuery collection you call it on. For example:
+
+```
+$('selector').twitter('search terms');
+```
+
+### Default Options Object
+$.twitter.options
+
+This is the publicly available object that $.twitter() and $.fn.twitter() use to configure twitter searches. You can override it at the beginning of your code to prevent yourself from repeating configurations unnecessarily. For example:
+
+```
+// Default all twitter lists to exclude @replies and dirty words
+$.twitter.options.replies = false; 
+
+// Set a whole bunch of defaults at once
+
+$.extend($.twitter.options, {
+  replies  : false,
+  retweets : false,
+  limit    : 20,
+  nots     : 'dirty words'
+});
+```
+
+### Standard Twitter Search API options
+You can pass the following default Twitter Search API Parameters to $.fn.twitter() as properties of the options object:
+
+q: Default query
+
+ands: All of these words
+
+phrase: This exact phrase
+
+ors: Any of these words
+
+nots: None of these word
+
+tag: This hashtag
+
+lang: Written in language
+
+from: From this person
+
+to: To this person
+
+ref: Referencing this person
+
+near: Near this place
+
+within: Within this distance
+
+units: Distance unit (miles or kilometers)
+
+since: Since this date
+
+until: Until this date
+
+tude: Attitude: '?' or ':)' or ':('
+
+filter: Containing: 'links'
+
+include: Include retweet?: 'retweets'
+
+rpp: Results per page
+
+### Non Standard Options
+In addition to supporting the default Twitter Search API URL parameters, $.fn.twitter() also supports five of it's own options for filtering out mentions and retweets and for handling no results cases client side.
+
+limit: Number of tweets to get. Maps to and supersedes rpp (results per page).
+
+exclusions: Space delimited list of strings (eg: '_ s gr @b'). Use this to exclude tweets containing strings that are part of a word
+
+avatar: Include user avatars? true by default. (Boolean)
+
+notFoundText: Text to display if no results are found
+
+replies: Include replies? (Boolean)
+
+retweets: Include retweets (Boolean)
+
 
 ## Contributing
 To get started contributing to jQuery.twitter.js, install [grunt](https://github.com/cowboy/grunt) globally (```$ npm install grunt -g ```).
