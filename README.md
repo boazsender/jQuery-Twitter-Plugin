@@ -59,9 +59,9 @@ The jQuery Twitter Plugin provides two methods and a public default options obje
 ### Static Method
 $.twitter(options, callback)
 
-_*options**: the string or object used to configure the search_
+_**options**: the string or object used to configure the search_
 
-_*callback**: the function to run when the results come back from twitter. Three arguments are passed to this callback(tweets, query, exclusionsExp)_
+_**callback**: the function to run when the results come back from twitter. Three arguments are passed to this callback(tweets, query, exclusionsExp)_
 
 This method allows you to get twitter results and work with the JSON response. Fore example:
 
@@ -74,7 +74,7 @@ $.twitter({from: 'BoazSender', replies : false}, function(tweets){
 ### jQuery Collection Method
 $.fn.twitter(options)
 
-_*options**: the string or object used to configure the search_
+_**options**: the string or object used to configure the search_
 
 This method uses $.twitter() internally to go and get the tweets you ask for, and render them in a ```<ul>``` within each element in the jQuery collection you call it on. For example:
 
