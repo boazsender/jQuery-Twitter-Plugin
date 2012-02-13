@@ -24,6 +24,8 @@ In the browser:
 ```
 
 ## Examples
+You can see a prettyr thorough overview of this plugins usage from [this Gist](http://bl.ocks.org/1813727).
+
 ### Simple Syntax:
 Passing in a string to the plugin simply performs a search with that string.
 ```
