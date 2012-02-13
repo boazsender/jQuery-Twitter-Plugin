@@ -20,7 +20,7 @@
     $('#testlist3').twitter('ikjn gt oidfbgjldkfobnidfjoh;bikdjfkbhjfldldfj');
   
     $('#testlist4').twitter({
-      ands    : 'I',           // All of these words  
+      ands    : '',           // All of these words  
       phrase  : '',            // This exact phrase 
       ors     : 'lol rotfl',   // Any of these words  
       nots    : 'dirty',       // None of these words 
@@ -44,22 +44,22 @@
       $.twitter('foo', function(tweets){
         equals( 'object', (typeof tweets), "$.twitter('foo') returns and object" );
   
-      })
+      });
 
       $.twitter({from : 'mediatemple'}, function(tweets){
         equals( 'mediatemple', tweets.results[0].from_user, "$.twitter({from : 'mediatemple'}) returns tweets from @mediatemple" );
   
-      })
+      });
     
       $.twitter({from : 'mediatemple', replies: false}, function(tweets){
         equals( 'mediatemple', tweets.results[0].from_user, "$.twitter({from : 'mediatemple'}) returns tweets from @mediatemple with replies set to false" );
   
-      })
+      });
     
       $.twitter({from : 'mediatemple', retweets: false}, function(tweets){
         equals( 'mediatemple', tweets.results[0].from_user, "$.twitter({from : 'mediatemple'}) returns tweets from @mediatemple with retweets set to false" );
   
-      })
+      });
     
       setTimeout(function(){
         start();
@@ -126,7 +126,7 @@
     
       equals( null, $('#testlist4').text().match(/dirty/), "'dirty' should not show up" );
     
-      equals( 'I', $('#testlist4').text().match(/I/), "'I' should show up in testlist 4" );
+      equals( 'o', $('#testlist4').text().match(/o/), "'I' should show up in testlist 4" );
     
       equals( 'omg', $('#testlist4').text().toLowerCase().match(/omg/), "'omg' should show up in testlist 4" );
     });
