@@ -147,17 +147,21 @@ Do not edit files in the "dist" directory as they are generated via grunt. You'l
 
 ## License
 Copyright (c) 2012 Boaz Sender  
-Authors: Boaz Sender, Rick Waldron, Nick Cammarata
 Licensed under the MIT, GPL licenses.
 http://code.bocoup.com/license/
 
-#### JavaScript Linkify - v0.3 - 6/27/2009
-http://benalman.com/projects/javascript-linkify/
+jQuery-Twitter depends on [JavaScript Linkify - v0.3](http://benalman.com/projects/javascript-linkify) from "Cowboy" Ben Alman.
 
-Copyright (c) 2009 "Cowboy" Ben Alman
-Dual licensed under the MIT and GPL licenses.
-http://benalman.com/about/license/
+Some of jQuery-Twitter's regexps adapted from http://userscripts.org/scripts/review/7122
 
-Some regexps adapted from http://userscripts.org/scripts/review/7122
+This project is built with "Cowboy" Ben Alman's [Grunt](https://github.com/cowboy/grunt).
 
-This project is built with Ben Alman's Grunt
+## Authors
+
+* [Boaz Sender](http://github.com/boazsender)
+* [Rick Waldron](http://github.com/rwldrn)
+* [Nick Cammarata](http://github.com/ncammarata)
+* [Irene Ros](http://github.com/iros)
+* [Tyom Semonov](https://github.com/tyom)
+* [Adam Sontag](http://github.com/ajpiano)
+* [Tyler Craft](http://github.com/tylercraft)
