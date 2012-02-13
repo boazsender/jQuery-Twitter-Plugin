@@ -8,7 +8,7 @@ config.init({
             ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */'
   },
   concat: {
-    'dist/jquery.twitter.js': ['<banner>', '<file_strip_banner:src/jquery.twitter.js>', 'src/ba-linkify.js']
+    'dist/jquery.twitter.js': ['<banner>', 'src/ba-linkify.js', '<file_strip_banner:src/jquery.twitter.js>']
   },
   min: {
     'dist/jquery.twitter.min.js': ['<banner>', 'dist/jquery.twitter.js']
