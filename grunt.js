@@ -17,7 +17,7 @@ config.init({
     files: ['test/**/*.html']
   },
   lint: {
-    files: ['grunt.js', 'src/**/*.js', 'test/**/*.js']
+    files: ['grunt.js', 'src/**/!(ba-linkify)*.js', 'test/**/*.js']
   },
   watch: {
     files: '<config:lint.files>',
