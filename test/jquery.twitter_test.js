@@ -117,7 +117,7 @@
     
       ok($('#testlist1').children().find('a').find('img').length, "Make sure the user avatar is present and inside of an anchor" );
 		
-      equals(0, $('#testlist5').children().find('a').find('img').length, "Make sure the user avatar is not present inside of an anchor when avatar option is set to false")
+      equals(0, $('#testlist5').children().find('a').find('img').length, "Make sure the user avatar is not present inside of an anchor when avatar option is set to false");
     
       ok($('#testlist1').children().find('span').length, "Make sure the tweet is there" );
     
