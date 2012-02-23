@@ -42,7 +42,7 @@
       stop();
 
       $.twitter("foo", function(tweets){
-        equal( "object", (typeof tweets), "$.twitter('foo') returns and object" );
+        equal( "object", (typeof tweets), "$.twitter('foo') returns an object" );
 
       });
 
@@ -81,20 +81,20 @@
 
       ok($.isFunction($.fn.twitter), "$.fn.twitter exists and is a function" );
 
-      equal( "object", (typeof $.fn.twitter({})), "$.fn.twitter({}) returns and object" );
-      equal( "string", (typeof $.fn.twitter({}).selector), "$.fn.twitter({}) returns and object" );
+      equal( "object", (typeof $.fn.twitter({})), "$.fn.twitter({}) returns an object" );
+      equal( "string", (typeof $.fn.twitter({}).selector), "$.fn.twitter({}) returns an object" );
 
-      equal( "object", (typeof $.fn.twitter("foo")), "$.fn.twitter('foo') returns and object" );
-      equal( "string", (typeof $.fn.twitter("foo").selector), "$.fn.twitter('foo') returns and object" );
+      equal( "object", (typeof $.fn.twitter("foo")), "$.fn.twitter('foo') returns an object" );
+      equal( "string", (typeof $.fn.twitter("foo").selector), "$.fn.twitter('foo') returns an object" );
 
-      equal( "object", (typeof $.fn.twitter()), "$.fn.twitter() returns and object" );
-      equal( "string", (typeof $.fn.twitter().selector), "$.fn.twitter() returns and object" );
+      equal( "object", (typeof $.fn.twitter()), "$.fn.twitter() returns an object" );
+      equal( "string", (typeof $.fn.twitter().selector), "$.fn.twitter() returns an object" );
 
-      equal( "object", (typeof $.fn.twitter(null)), "$.fn.twitter(null) returns and object" );
-      equal( "string", (typeof $.fn.twitter(null).selector), "$.fn.twitter(null) returns and object" );
+      equal( "object", (typeof $.fn.twitter(null)), "$.fn.twitter(null) returns an object" );
+      equal( "string", (typeof $.fn.twitter(null).selector), "$.fn.twitter(null) returns an object" );
 
-      equal( "object", (typeof $.fn.twitter(undefined)), "$.fn.twitter(null) returns and object" );
-      equal( "string", (typeof $.fn.twitter(undefined).selector), "$.fn.twitter(null) returns and object" );
+      equal( "object", (typeof $.fn.twitter(undefined)), "$.fn.twitter(null) returns an object" );
+      equal( "string", (typeof $.fn.twitter(undefined).selector), "$.fn.twitter(null) returns an object" );
 
     });
     test("Test twitter list that is built", function() {
@@ -109,7 +109,7 @@
       equal( 2, $("#testlist1").children().children().length, "The twitter list should have 2 children" );
       equal( 4, $("#testlist4").children().children().length, "The twitter list should have 4 children" );
 
-      equal( "@", $("#testlist1").text().match(/@/), "The twitter lis should have at least one @ symbol in it" );
+      equal( "@", $("#testlist1").text().match(/@/), "The twitter list should have at least one @ symbol in it" );
 
       equal( "Whoops, no results", $("#testlist2").text(), "The failed search should say 'Whoops, no results'" );
 
