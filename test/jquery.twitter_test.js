@@ -36,6 +36,24 @@
       avatar  : false
     });
 
+    // Temporarily replace $.twitter with a mock version that returns a pre-defined result
+    $.oTwitter = $.twitter;
+    $.twitter = function( options, callback ) {
+      var tweets = {
+        "results" : [{
+          "from_user": "mediatemple",
+          "text": "This text contains a @mention and a #hashtag"
+        }]
+      };
+      callback( tweets, {}, null );
+    };
+
+    $("#testlist6").twitter({ from: "mediatemple" });
+
+    // Replace original $.twitter function
+    $.twitter = $.oTwitter;
+    delete $.oTwitter;
+
     module("$.twitter()");
     test("Test the async", function() {
 
@@ -120,6 +138,10 @@
       equal( $("#testlist5").children().find("a").find("img").length, 0, "Make sure the user avatar is not present inside of an anchor when avatar option is set to false");
 
       ok($("#testlist1").children().find("span").length, "Make sure the tweet is there" );
+
+      ok( $("#testlist6").children().find('a[href="http://twitter.com/mention"]').length, "Make sure @mentions are linked" );
+
+      ok( $("#testlist6").children().find('a[href="http://search.twitter.com/search?q=%23hashtag"]').length, "Make sure #hashtags are linked" );
 
     });
     test("Test a few of the cases for the object style signature", function() {
