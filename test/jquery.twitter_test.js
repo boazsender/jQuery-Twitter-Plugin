@@ -36,28 +36,46 @@
       avatar  : false
     });
 
+    // Temporarily replace $.twitter with a mock version that returns a pre-defined result
+    $.oTwitter = $.twitter;
+    $.twitter = function( options, callback ) {
+      var tweets = {
+        "results" : [{
+          "from_user": "mediatemple",
+          "text": "This text contains a @mention and a #hashtag"
+        }]
+      };
+      callback( tweets, {}, null );
+    };
+
+    $("#testlist6").twitter({ from: "mediatemple" });
+
+    // Replace original $.twitter function
+    $.twitter = $.oTwitter;
+    delete $.oTwitter;
+
     module("$.twitter()");
     test("Test the async", function() {
 
       stop();
 
       $.twitter("foo", function(tweets){
-        equal( "object", (typeof tweets), "$.twitter('foo') returns and object" );
+        equal( (typeof tweets), "object", "$.twitter('foo') returns an object" );
 
       });
 
       $.twitter({from : "mediatemple"}, function(tweets){
-        equal( "mediatemple", tweets.results[0].from_user, "$.twitter({from : 'mediatemple'}) returns tweets from @mediatemple" );
+        equal( tweets.results[0].from_user, "mediatemple", "$.twitter({from : 'mediatemple'}) returns tweets from @mediatemple" );
 
       });
 
       $.twitter({from : "mediatemple", replies: false}, function(tweets){
-        equal( "mediatemple", tweets.results[0].from_user, "$.twitter({from : 'mediatemple'}) returns tweets from @mediatemple with replies set to false" );
+        equal( tweets.results[0].from_user, "mediatemple", "$.twitter({from : 'mediatemple'}) returns tweets from @mediatemple with replies set to false" );
 
       });
 
       $.twitter({from : "mediatemple", retweets: false}, function(tweets){
-        equal( "mediatemple", tweets.results[0].from_user, "$.twitter({from : 'mediatemple'}) returns tweets from @mediatemple with retweets set to false" );
+        equal( tweets.results[0].from_user, "mediatemple", "$.twitter({from : 'mediatemple'}) returns tweets from @mediatemple with retweets set to false" );
 
       });
 
@@ -72,7 +90,7 @@
 
       ok($.isFunction($.twitter), "$.twitter exists and is a function" );
 
-      equal( false, $.twitter(), "$.twitter() returns false if you pass it nothing" );
+      equal( $.twitter(), false, "$.twitter() returns false if you pass it nothing" );
 
     });
 
@@ -81,54 +99,58 @@
 
       ok($.isFunction($.fn.twitter), "$.fn.twitter exists and is a function" );
 
-      equal( "object", (typeof $.fn.twitter({})), "$.fn.twitter({}) returns and object" );
-      equal( "string", (typeof $.fn.twitter({}).selector), "$.fn.twitter({}) returns and object" );
+      equal( (typeof $.fn.twitter({})), "object", "$.fn.twitter({}) returns an object" );
+      equal( (typeof $.fn.twitter({}).selector), "string", "$.fn.twitter({}) returns an object" );
 
-      equal( "object", (typeof $.fn.twitter("foo")), "$.fn.twitter('foo') returns and object" );
-      equal( "string", (typeof $.fn.twitter("foo").selector), "$.fn.twitter('foo') returns and object" );
+      equal( (typeof $.fn.twitter("foo")), "object", "$.fn.twitter('foo') returns an object" );
+      equal( (typeof $.fn.twitter("foo").selector), "string", "$.fn.twitter('foo') returns an object" );
 
-      equal( "object", (typeof $.fn.twitter()), "$.fn.twitter() returns and object" );
-      equal( "string", (typeof $.fn.twitter().selector), "$.fn.twitter() returns and object" );
+      equal( (typeof $.fn.twitter()), "object", "$.fn.twitter() returns an object" );
+      equal( (typeof $.fn.twitter().selector), "string", "$.fn.twitter() returns an object" );
 
-      equal( "object", (typeof $.fn.twitter(null)), "$.fn.twitter(null) returns and object" );
-      equal( "string", (typeof $.fn.twitter(null).selector), "$.fn.twitter(null) returns and object" );
+      equal( (typeof $.fn.twitter(null)), "object", "$.fn.twitter(null) returns an object" );
+      equal( (typeof $.fn.twitter(null).selector), "string", "$.fn.twitter(null) returns an object" );
 
-      equal( "object", (typeof $.fn.twitter(undefined)), "$.fn.twitter(null) returns and object" );
-      equal( "string", (typeof $.fn.twitter(undefined).selector), "$.fn.twitter(null) returns and object" );
+      equal( (typeof $.fn.twitter(undefined)), "object", "$.fn.twitter(null) returns an object" );
+      equal( (typeof $.fn.twitter(undefined).selector), "string", "$.fn.twitter(null) returns an object" );
 
     });
     test("Test twitter list that is built", function() {
 
 
-      equal( 1, $("#testlist1").children().length, "Any element with $.fn.twitter() should have exactly one child" );
-      equal( 1, $("#testlist2").children().length, "Any element with $.fn.twitter() should have exactly one child" );
-      equal( 1, $("#testlist3").children().length, "Any element with $.fn.twitter() should have exactly one child" );
-      equal( 1, $("#testlist4").children().length, "Any element with $.fn.twitter() should have exactly one child" );
+      equal( $("#testlist1").children().length, 1, "Any element with $.fn.twitter() should have exactly one child" );
+      equal( $("#testlist2").children().length, 1, "Any element with $.fn.twitter() should have exactly one child" );
+      equal( $("#testlist3").children().length, 1, "Any element with $.fn.twitter() should have exactly one child" );
+      equal( $("#testlist4").children().length, 1, "Any element with $.fn.twitter() should have exactly one child" );
 
 
-      equal( 2, $("#testlist1").children().children().length, "The twitter list should have 2 children" );
-      equal( 4, $("#testlist4").children().children().length, "The twitter list should have 4 children" );
+      equal( $("#testlist1").children().children().length, 2, "The twitter list should have 2 children" );
+      equal( $("#testlist4").children().children().length, 4, "The twitter list should have 4 children" );
 
-      equal( "@", $("#testlist1").text().match(/@/), "The twitter lis should have at least one @ symbol in it" );
+      equal( $("#testlist1").text().match(/@/), "@", "The twitter list should have at least one @ symbol in it" );
 
-      equal( "Whoops, no results", $("#testlist2").text(), "The failed search should say 'Whoops, no results'" );
+      equal( $("#testlist2").text(), "Whoops, no results", "The failed search should say 'Whoops, no results'" );
 
-      equal( "No results found on twitter", $("#testlist3").text(), "The failed search should default to 'No results found on twitter'" );
+      equal( $("#testlist3").text(), "No results found on twitter", "The failed search should default to 'No results found on twitter'" );
 
       ok($("#testlist1").children().find("a").find("img").length, "Make sure the user avatar is present and inside of an anchor" );
 
-      equal(0, $("#testlist5").children().find("a").find("img").length, "Make sure the user avatar is not present inside of an anchor when avatar option is set to false");
+      equal( $("#testlist5").children().find("a").find("img").length, 0, "Make sure the user avatar is not present inside of an anchor when avatar option is set to false");
 
       ok($("#testlist1").children().find("span").length, "Make sure the tweet is there" );
+
+      ok( $("#testlist6").children().find('a[href="http://twitter.com/mention"]').length, "Make sure @mentions are linked" );
+
+      ok( $("#testlist6").children().find('a[href="http://search.twitter.com/search?q=%23hashtag"]').length, "Make sure #hashtags are linked" );
 
     });
     test("Test a few of the cases for the object style signature", function() {
 
-      equal( null, $("#testlist4").text().match(/dirty/), "'dirty' should not show up" );
+      equal( $("#testlist4").text().match(/dirty/), null, "'dirty' should not show up" );
 
-      equal( "o", $("#testlist4").text().match(/o/), "'I' should show up in testlist 4" );
+      equal( $("#testlist4").text().match(/o/), "o", "'I' should show up in testlist 4" );
 
-      equal( "omg", $("#testlist4").text().toLowerCase().match(/omg/), "'omg' should show up in testlist 4" );
+      equal( $("#testlist4").text().toLowerCase().match(/omg/), "omg", "'omg' should show up in testlist 4" );
     });
 
     test("Test no replies, no retweets", function() {
@@ -150,9 +172,9 @@
         }
       }
 
-      equal( 4, tweets.length, "There are four tweets" );
-      equal( 0, retweets.length, "There are no Retweets" );
-      equal( 0, replies.length, "There are no Replies" );
+      equal( tweets.length, 4, "There are four tweets" );
+      equal( retweets.length, 0, "There are no Retweets" );
+      equal( replies.length, 0, "There are no Replies" );
 
     });
 
