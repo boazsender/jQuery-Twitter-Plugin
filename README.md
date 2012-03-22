@@ -14,7 +14,7 @@ Download the [production version][min] or the [development version][max].
 
 In the browser:
 
-```html
+```
 <script src="http://code.jquery.com/jquery.js"></script>
 <script src="jquery.twitter.min.js"></script>
 <style type="text/css">
@@ -40,7 +40,7 @@ $('selector').twitter('search terms');
 ### Verbose Syntax:
 There are lots of options, so you could do something more like:
 
-```javascript
+```
 $('selector').twitter({
   // From this person
   from : 'BoazSender',
