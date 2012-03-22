@@ -40,7 +40,7 @@ $('selector').twitter('search terms');
 ### Verbose Syntax:
 There are lots of options, so you could do something more like:
 
-```
+```javascript
 $('selector').twitter({
   // From this person
   from : 'BoazSender',
