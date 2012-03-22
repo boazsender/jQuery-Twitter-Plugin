@@ -76,15 +76,23 @@ $.twitter({from: 'BoazSender', replies : false}, function(tweets){
 ```
 
 ### jQuery Collection Method
-$.fn.twitter(options)
+$.fn.twitter(options, callback)
 
 _**options**: the string or object used to configure the search_
 
+_**callback**: the function to run when the results come back from twitter. One boolean is passed to this callback. True if tweets were injected, False if no tweets were returned_
+
 This method uses $.twitter() internally to go and get the tweets you ask for, and render them in a ```<ul>``` within each element in the jQuery collection you call it on. For example:
 
-```
-$('selector').twitter('search terms');
-```
+  ```
+  $('selector').twitter('search terms', function(tweets){
+    if(tweets){
+      console.log('Tweets have been added');
+    }else{
+      console.log('Zero tweets retruned, no tweets added to the page'); 
+    }
+  });
+  ```
 
 ### Default Options Object
 $.twitter.options
@@ -147,6 +155,7 @@ Do not edit files in the "dist" directory as they are generated via grunt. You'l
 
 ## Release History
 
+* 2012/01/22 - v0.2.1 - Added callback support to .fn.twitter
 * 2012/01/22 - v0.2.0 - Moved to grunt based project organization and concat/min/lint/test, started passing lint.
 * 2012/01/21 - v0.1.1 - Upgraded to jQuery 1.7.1, fixed classname bug, got rid of all globals.
 * 2011/08/11 - v0.1.0 - Initial release.

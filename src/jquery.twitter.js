@@ -72,7 +72,7 @@ var linkify = linkify || function() {};
     });
   };
 
-  $.fn.twitter = function( options ) {
+  $.fn.twitter = function( options, callback ) {
     // Fail gracefully if the options arg is not set
     // return the jQuery obj so that chaining does not break
     if ( !options ) {
@@ -153,6 +153,10 @@ var linkify = linkify || function() {};
 
           // Inject the $tweets into the DOM
           $this.html($tweets);
+          
+          if(callback){
+            callback(true);
+          }
 
         // Else there are no results to work with
         } else {
@@ -161,6 +165,10 @@ var linkify = linkify || function() {};
             "class": "twitter-notFound",
             text: query.notFoundText
           }));
+          
+          if(callback){
+            callback(false);
+          }
         }
       });
     });

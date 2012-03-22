@@ -1,5 +1,5 @@
-/*! jQuery Twitter Plugin - v0.2.0 - 2/13/2012
-* http://code.bocoup.com/jquery-twitter-plugin/
+/*! jQuery Twitter Plugin - v0.2.1 - 3/22/2012
+* https://github.com/boazsender/jQuery-Twitter-Plugin
 * Copyright (c) 2012 Boaz Sender; Licensed MIT, GPL */
 
 /*!
@@ -221,12 +221,12 @@ var linkify = linkify || function() {};
 
   var
   mention = function( str ) {
-    return str.replace("/[@]+[A-Za-z0-9-_]+/ig", function( username ) {
+    return str.replace(/[@]+[a-z0-9-_]+/ig, function( username ) {
       return username.link("http://twitter.com/"+ username.replace("@","") );
     });
   },
   hashtags = function( str ) {
-    return str.replace("/[#]+[A-Za-z0-9-_]+/ig", function( tag ) {
+    return str.replace(/[#]+[a-z0-9-_]+/ig, function( tag ) {
       return tag.link("http://search.twitter.com/search?q="+tag.replace("#","%23"));
     });
   };
@@ -280,7 +280,7 @@ var linkify = linkify || function() {};
     });
   };
 
-  $.fn.twitter = function( options ) {
+  $.fn.twitter = function( options, callback ) {
     // Fail gracefully if the options arg is not set
     // return the jQuery obj so that chaining does not break
     if ( !options ) {
@@ -361,6 +361,10 @@ var linkify = linkify || function() {};
 
           // Inject the $tweets into the DOM
           $this.html($tweets);
+          
+          if(callback){
+            callback(true);
+          }
 
         // Else there are no results to work with
         } else {
@@ -369,6 +373,10 @@ var linkify = linkify || function() {};
             "class": "twitter-notFound",
             text: query.notFoundText
           }));
+          
+          if(callback){
+            callback(false);
+          }
         }
       });
     });
