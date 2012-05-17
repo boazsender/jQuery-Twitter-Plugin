@@ -5,21 +5,22 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: '<json:package.json>',
     meta: {
-      banner: '/*! <%= pkg.title %> - v<%= pkg.version %> - <%= template.today("m/d/yyyy") %>\n' +
-              '* <%= pkg.homepage %>\n' +
-              '* Copyright (c) <%= template.today("yyyy") %> <%= pkg.author.name %>;' +
-              ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */'
+      banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
+        '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
+        '<%= pkg.homepage ? "* " + pkg.homepage + "\n" : "" %>' +
+        '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
+        ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */'
     },
     concat: {
       dist: {
-        src: ['<banner>', 'src/ba-linkify.js', '<file_strip_banner:src/jquery.twitter.js>'],
-        dest: 'dist/jquery.twitter.js'
+        src: ['<banner:meta.banner>', '<file_strip_banner:src/<%= pkg.name %>.js>'],
+        dest: 'dist/<%= pkg.name %>.js'
       }
     },
     min: {
       dist: {
-        src: ['<banner>', 'dist/jquery.twitter.js'],
-        dest: 'dist/jquery.twitter.min.js'
+        src: ['<banner:meta.banner>', '<config:concat.dist.dest>'],
+        dest: 'dist/<%= pkg.name %>.min.js'
       }
     },
     qunit: {
@@ -42,6 +43,7 @@ module.exports = function(grunt) {
         noarg: true,
         sub: true,
         undef: true,
+        boss: true,
         eqnull: true,
         browser: true
       },
