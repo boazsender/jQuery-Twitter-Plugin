@@ -155,7 +155,7 @@ Do not edit files in the "dist" directory as they are generated via grunt. You'l
 
 ## Release History
 
-* 2012/01/22 - v0.2.1 - Added callback support to .fn.twitter
+* 2012/01/22 - v0.2.1 - Added callback support to .fn.twitter, upgrading to grunt v0.3.9 and QUnit v1.7.0pre
 * 2012/01/22 - v0.2.0 - Moved to grunt based project organization and concat/min/lint/test, started passing lint.
 * 2012/01/21 - v0.1.1 - Upgraded to jQuery 1.7.1, fixed classname bug, got rid of all globals.
 * 2011/08/11 - v0.1.0 - Initial release.
