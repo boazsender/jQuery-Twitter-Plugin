@@ -178,6 +178,15 @@
 
     });
 
+    asyncTest( "Test callback on the instance method", 1, function() {
+
+      $("#testlist7").twitter({ from: "mediatemple" }, function( tweets ){
+        ok( tweets, "tweets have been rendered in the dom" );
+        start();
+      });
+
+    });
+
   });
 
 }(jQuery));
