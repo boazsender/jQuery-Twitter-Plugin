@@ -13,12 +13,12 @@ var linkify = linkify || function() {};
 
   var
   mention = function( str ) {
-    return str.replace(/[@]+[a-z0-9-_]+/ig, function( username ) {
+    return str.replace(/[@]+[a-z0\-9-_]+/ig, function( username ) {
       return username.link("http://twitter.com/"+ username.replace("@","") );
     });
   },
   hashtags = function( str ) {
-    return str.replace(/[#]+[a-z0-9-_]+/ig, function( tag ) {
+    return str.replace(/[#]+[a-z0\-9-_]+/ig, function( tag ) {
       return tag.link("http://search.twitter.com/search?q="+tag.replace("#","%23"));
     });
   };
