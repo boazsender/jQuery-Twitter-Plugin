@@ -6,6 +6,9 @@ In addition to supporting the default Twitter Search API URL parameters, $.twitt
 
 ```$.fn.twitter``` creates a ```<ul>``` of tweets for you, and puts it in the DOM. This plugin comes with a static ```$.twitter``` which ```$.fn.twitter``` uses under the hood for doing twitter searches.
 
+## Demo
+We've got a handy demo up at http://bl.ocks.org/1813727
+
 ## Getting Started
 Download the [production version][min] or the [development version][max].
 
