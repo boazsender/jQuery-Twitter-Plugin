@@ -10,7 +10,9 @@ In addition to supporting the default Twitter Search API URL parameters, $.twitt
 We've got a handy demo up at http://bl.ocks.org/1813727
 
 ## Getting Started
-Download the [production version][min] or the [development version][max].
+Download "Cowboy" Ben Alman's [JavaScript Linkify - v0.3](https://raw.github.com/cowboy/javascript-linkify/master/ba-linkify.min.js).
+
+Download the [production version][min] or the [development version][max] of jQuery.twitter.
 
 [min]: https://raw.github.com/boazsender/jQuery-Twitter-Plugin/master/dist/jquery.twitter.min.js
 [max]: https://raw.github.com/boazsender/jQuery-Twitter-Plugin/master/dist/jquery.twitter.js
@@ -19,6 +21,7 @@ In the browser:
 
 ```
 <script src="http://code.jquery.com/jquery.js"></script>
+<script src="ba-linkify.min.js"></script>
 <script src="jquery.twitter.min.js"></script>
 <style type="text/css">
   .twitter-posts li {margin-bottom: 10px; font-size: 12px; clear: both; list-style-type:none;}
@@ -168,7 +171,7 @@ Copyright (c) 2012 Boaz Sender
 Licensed under the MIT, GPL licenses.
 http://code.bocoup.com/license/
 
-jQuery-Twitter depends on [JavaScript Linkify - v0.3](http://benalman.com/projects/javascript-linkify) from "Cowboy" Ben Alman.
+jQuery-Twitter depends on [JavaScript Linkify - v0.3](https://github.com/cowboy/javascript-linkify) ([code](https://raw.github.com/cowboy/javascript-linkify/master/ba-linkify.min.js)) from "Cowboy" Ben Alman.
 
 Some of jQuery-Twitter's regexps adapted from http://userscripts.org/scripts/review/7122
 
