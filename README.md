@@ -141,6 +141,7 @@ You can pass the following default Twitter Search API Parameters to $.fn.twitter
 * **filter**: Containing**: 'links'
 * **include**: Include retweet?**: 'retweets'
 * **rpp**: Results per page
+* **include_entities**: Intelligently expand media, hyperlinks, @mentions, and hashtags
 
 ### Non Standard Options
 In addition to supporting the default Twitter Search API URL parameters, $.fn.twitter() also supports five of it's own options for filtering out mentions and retweets and for handling no results cases client side.

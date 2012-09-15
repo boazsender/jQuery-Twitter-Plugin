@@ -21,6 +21,55 @@ var linkify = linkify || function() {};
     return str.replace(/[#]+[a-z0\-9-_]+/ig, function( tag ) {
       return tag.link("http://search.twitter.com/search?q="+tag.replace("#","%23"));
     });
+  },
+  entityExpanders = {
+    // Simply expand media entities as though they were hyperlinks
+    media: function( text, mediaEntity ) {
+      return entityExpanders.urls(text, mediaEntity);
+    },
+    urls: function( text, urlEntity ) {
+      return "<a href='" + urlEntity.url + "' title='" +
+        urlEntity.expanded_url + "'>" +
+        urlEntity.display_url +
+        "</a>";
+    },
+    user_mentions: function( text, userEntity ) {
+      return "<a href='http://twitter.com/" + userEntity.screen_name +
+        "' title='" + userEntity.name + "'>@" + userEntity.screen_name +
+        "</a>";
+    },
+    hashtags: function( text, hashtagEntity ) {
+      return "<a href='http://search.twitter.com/search?q=%23" +
+        hashtagEntity.text + "'>#" + hashtagEntity.text + "</a>";
+    }
+  },
+  expandEntities = function( tweet ) {
+    var expanded = tweet.text;
+    var allEnts = [];
+
+    // To facilitate an in-place replacement, create a flat list of all
+    // entities, sorted in descending order according to index in the tweet.
+    $.each(tweet.entities, function(entityType, entities) {
+      $.each(entities, function(_, entity) {
+        entity.type = entityType;
+      });
+      allEnts = allEnts.concat(entities);
+    });
+    allEnts.sort(function(a, b) {
+      return a.indices[0] < b.indices[0];
+    });
+
+    $.each(allEnts, function(_, entity) {
+      // Check for expander first in order to prevent future entities from
+      // breaking the plugin
+      if (entityExpanders[entity.type]) {
+        expanded = expanded.slice(0, entity.indices[0]) +
+          entityExpanders[entity.type](expanded, entity) +
+          expanded.slice(entity.indices[1]);
+      }
+    });
+
+    return expanded;
   };
 
   $.twitter = function (options, callback) {
@@ -134,10 +183,19 @@ var linkify = linkify || function() {};
               }));
             }
 
-            // Make the tweet text, and append it to the $tweet, then to the parent
+            // Make the tweet HTML
+            var tweetHtml = "<a href='http://twitter.com/" + tweet.from_user +
+              "'>@" + tweet.from_user + "</a>: ";
+            if (query.include_entities) {
+              tweetHtml += expandEntities(tweet);
+            } else {
+              tweetHtml += mention(hashtags(linkify(tweet.text)));
+            }
+
+            // Append the HTML to the $tweet, then to the parent
             $tweet.append($("<span>", {
               "class": "content",
-              html: "<a href='http://twitter.com/" + tweet.from_user + "'>@" + tweet.from_user + "</a>: " + mention(hashtags(linkify(tweet.text)))
+              html: tweetHtml
             }))
             // Append tweet to the $tweets ul
             .appendTo($tweets);
@@ -229,6 +287,8 @@ var linkify = linkify || function() {};
     // Default query
     q: "",
     // Add an avatar image of the user
-    avatar: true
+    avatar: true,
+    // Retrieve and replace entities
+    include_entities: true
   };
 }(jQuery, linkify));
