@@ -1,4 +1,4 @@
-/*! jQuery Twitter Plugin - v0.2.2 - 2012-12-24
+/*! jQuery Twitter Plugin - v0.3 - 2012-12-24
 * https://github.com/boazsender/jQuery-Twitter-Plugin
 * Copyright (c) 2012 Boaz Sender; Licensed MIT, GPL */
 

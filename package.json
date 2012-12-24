@@ -2,7 +2,7 @@
   "name": "jquery.twitter",
   "title": "jQuery Twitter Plugin",
   "description": "A jQuery plugin for putting twitter searches on website",
-  "version": "0.2.2",
+  "version": "0.3",
   "homepage": "https://github.com/boazsender/jQuery-Twitter-Plugin",
   "author": {
     "name": "Boaz Sender",
