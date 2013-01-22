@@ -1,30 +1,31 @@
 {
-    "name": "jQuery-Twitter-Plugin",
+    "name": "twitter",
     "label": "jQuery Twitter Plugin",
     "license": [
         "mit",
         "gpl"
     ],
     "description": "A jQuery plugin for working with the Twitter Search API to put twitter searches on websites with a simple syntax that follows the Twitter Search API URL parameters.",
-    "copyright": "2012 Boaz Sender",
-    "version": "0.3",
+    "copyright": "2013 Boaz Sender",
+    "version": "0.3.1",
     "clone": "https://boazsender@github.com/boazsender/jQuery-Twitter-Plugin.git",
-    "repository": "https://github.com/boazsender/jQuery-Twitter-Plugin",
-    "issues": "https://github.com/boazsender/jQuery-Twitter-Plugin",
-    "dependencies" : {
-        "jquery/jquery" : [
-            "1.4.5"
-        ]
+    "homepage": "https://github.com/boazsender/jQuery-Twitter-Plugin",
+    "download": "https://github.com/boazsender/jQuery-Twitter-Plugin",
+    "bugs": "https://github.com/boazsender/jQuery-Twitter-Plugin",
+
+    "docs": "https://github.com/boazsender/jQuery-Twitter-Plugin/blob/master/README.md",
+    "dependencies": {
+        "jquery": ">=1.4.5"
     },
     "owner": "boazsender",
     "maintainers": [
         {
             "name": "Boaz Sender",
-            "twitter": "boazsender"
+            "url": "http://twitter.com/boazsender"
         },
         {
             "name": "Rick Waldron",
-            "twitter": "rwaldron"
+            "url": "http://twitter.com/rwaldron"
         }
     ]
 }
