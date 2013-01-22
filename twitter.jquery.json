@@ -7,7 +7,7 @@
     ],
     "description": "A jQuery plugin for working with the Twitter Search API to put twitter searches on websites with a simple syntax that follows the Twitter Search API URL parameters.",
     "copyright": "2013 Boaz Sender",
-    "version": "0.3.1",
+    "version": "0.3.2",
     "clone": "https://boazsender@github.com/boazsender/jQuery-Twitter-Plugin.git",
     "homepage": "https://github.com/boazsender/jQuery-Twitter-Plugin",
     "download": "https://github.com/boazsender/jQuery-Twitter-Plugin",
