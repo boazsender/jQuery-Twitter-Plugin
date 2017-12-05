@@ -1,7 +1,7 @@
+# Warning 
+This plugin was based on a now depricated version of the twitter API and is no longer maintained. This code doesn't work anymore. The original readme is below:
+
 # jQuery Twitter Plugin
-This plugin was based on a now depricated version of the twitter API and is no longer maintained. This code doesn't work anymore.
-
-
 A jQuery plugin for working with the Twitter Search API to put twitter searches on websites. jQuery.twitter has a simple syntax that follows the Twitter Search API URL parameters.
 
 In addition to supporting the default Twitter Search API URL parameters, $.twitter() and $.fn.twitter() also support five options for filtering out mentions and retweets and for handling no results cases client side.
